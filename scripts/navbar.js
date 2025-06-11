@@ -25,8 +25,8 @@ if (window.location.href == 'http://127.0.0.1:5500/index.html'
 const authUser = JSON.parse(localStorage.getItem('authUser'));
 
 // Incrementamos un navbar de bootstrap a nuestro documento
-navBar.innerHTML = `
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+navBar.innerHTML += `
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand disabled text-secondary fw-bold" href="#">LautyDeporte</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,15 +50,15 @@ navBar.innerHTML = `
                     </div>
                     <div class="d-flex justify-content-end gap-3 align-items-center" style="width: 30rem;">
                         <li class="nav-item">
-                            <a class="nav-link active text-success fw-medium" id="loginLink" aria-current="page" href="${urlLogin}">Iniciar Sesion</a>
+                            <a class="nav-link active text-success fw-bold" id="loginLink" aria-current="page" href="${urlLogin}">Iniciar Sesion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-success fw-medium" id="registerLink" aria-current="page" href="${urlRegister}">Registrarse</a>
+                            <a class="nav-link active text-success fw-bold" id="registerLink" aria-current="page" href="${urlRegister}">Registrarse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-danger fw-medium" id="logoutLink" aria-current="page" href="#" onclick="logOut()">Cerrar Sesion</a>
+                            <a class="nav-link active text-danger fw-bold" id="logoutLink" aria-current="page" href="#" onclick="logOut()">Cerrar Sesion</a>
                         </li>
-                        <a class="nav-link active text-secondary fw-medium" id="profileLink" aria-current="page" href="#">
+                        <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" href="#">
                             <i class="bi bi-cart4"></i>
                         </a>
                     </div>

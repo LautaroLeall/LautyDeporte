@@ -1,11 +1,24 @@
+#navContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.navbar{
+    background-color: hwb(60 56% 44% / 0.6);
+    height: 65px;
+}
+
 #homeLink{
     transition: all 0.3s ease-in-out;
+    font-size: 1.2rem;
 }
 
 #homeLink:hover{
-    color: grey;
+    color: white;
     transition: all 0.3s ease-in-out;
-    font-weight: bold;
     transform: scale(1.2);
 }
 
@@ -13,14 +26,14 @@
 #menLink,
 #kidsLink {
     transition: all 0.3s ease-in-out; 
+    font-size: 1.2rem;
 }
 
 #womenLink:hover,
 #menLink:hover,
 #kidsLink:hover {
-    color: hsl(205, 63%, 66%);
+    color: #867960;
     transition: all 0.3s ease-in-out;
-    font-weight: bold;
     transform: scale(1.2);
 }
 
@@ -29,6 +42,7 @@
 #logoutLink,
 #registerLink{
     transition: all 0.3s ease-in-out;
+    font-size: 1.2rem;
 }
 
 #profileLink:hover,
@@ -36,6 +50,5 @@
 #logoutLink:hover,
 #registerLink:hover{
     transition: all 0.3s ease-in-out;
-    font-weight: bold;
     transform: scale(1.2);
 }

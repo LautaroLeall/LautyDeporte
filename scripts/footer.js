@@ -4,7 +4,7 @@
 const footer = document.getElementById("footer");
 
 // Incrementamos un navbar de bootstrap a nuestro documento
-footer.innerHTML = `
+footer.innerHTML += `
     <div class="container-fluid bg-dark py-3 text-center mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4 col-xl-3 mb-3 text-start">
