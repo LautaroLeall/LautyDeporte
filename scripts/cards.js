@@ -7,11 +7,11 @@ const cards = document.getElementById("cards");
 const myProducts = [
     {
         id: 1,
-        nombre: "Auriculares Inalambricos Gtheos",
-        precio: 500,
+        nombre: "Remera Lacoste Crudo",
+        precio: 150000,
         stock: 8,
-        descripcion: "2.4 Ghz Para Pc, Ps4, Ps5",
-        img: "assets/auricular.png"
+        descripcion: "Material: 100% Algodón - Origen Perú",
+        img: "assets/lacoste-1.png"
     },
     {
         id: 2,
