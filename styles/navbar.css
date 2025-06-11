@@ -1,0 +1,41 @@
+#homeLink{
+    transition: all 0.3s ease-in-out;
+}
+
+#homeLink:hover{
+    color: grey;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    transform: scale(1.2);
+}
+
+#womenLink,
+#menLink,
+#kidsLink {
+    transition: all 0.3s ease-in-out; 
+}
+
+#womenLink:hover,
+#menLink:hover,
+#kidsLink:hover {
+    color: hsl(205, 63%, 66%);
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    transform: scale(1.2);
+}
+
+#profileLink,
+#loginLink,
+#logoutLink,
+#registerLink{
+    transition: all 0.3s ease-in-out;
+}
+
+#profileLink:hover,
+#loginLink:hover,
+#logoutLink:hover,
+#registerLink:hover{
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    transform: scale(1.2);
+}
