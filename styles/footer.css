@@ -1,0 +1,25 @@
+.img-footer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+    filter: grayscale(100%) blur(2px);
+    -webkit-filter: grayscale(100%) blur(2px);
+    -moz-filter: grayscale(100%) blur(2px);
+}
+
+.img-footer:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    filter: grayscale(0%) blur(0px);
+}
+
+.link-redes{
+    transition: all 0.3s ease-in-out;
+}
+
+.link-redes:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
