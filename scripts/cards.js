@@ -9,9 +9,17 @@ const myProducts = [
         id: 1,
         nombre: "Remera Lacoste Crudo",
         precio: 150000,
-        stock: 8,
+        stock: 20,
         descripcion: "Material: 100% Algodón - Origen Perú",
         categoria: "Hombre",
+        talles: {
+            XS: 0,
+            S: 4,
+            M: 6,
+            L: 8,
+            XL: 2,
+            XXL: 0
+        },
         imgFront: "assets/lacoste-1.png",
         imgBack: "assets/lacoste-1-atras.png"
     },
@@ -19,9 +27,17 @@ const myProducts = [
         id: 2,
         nombre: "Remera Lacoste Blanca",
         precio: 170000,
-        stock: 3,
+        stock: 6,
         descripcion: "Material: 96% Algodón Orgánico, 4% Elastano - Origen Turquía",
         categoria: "Hombre",
+        talles: {
+            XS: 2,
+            S: 0,
+            M: 1,
+            L: 0,
+            XL: 3,
+            XXL: 0
+        },
         imgFront: "assets/lacoste-2.png",
         imgBack: "assets/lacoste-2-atras.png"
     },
@@ -32,6 +48,14 @@ const myProducts = [
         stock: 16,
         descripcion: "Material: 100% Algodón - Origen Perú",
         categoria: "Hombre",
+        talles: {
+            XS: 0,
+            S: 3,
+            M: 1,
+            L: 5,
+            XL: 0,
+            XXL: 7
+        },
         imgFront: "assets/lacoste-3.png",
         imgBack: "assets/lacoste-3-atras.png"
     },
@@ -42,6 +66,14 @@ const myProducts = [
         stock: 8,
         descripcion: "Material: 100% Poliéster - Origen Camboya",
         categoria: "Unisex",
+        talles: {
+            XS: 0,
+            S: 0,
+            M: 2,
+            L: 0,
+            XL: 6,
+            XXL: 0
+        },
         imgFront: "assets/adidas-4.png",
         imgBack: "assets/adidas-4-atras.png"
     },
@@ -49,9 +81,17 @@ const myProducts = [
         id: 5,
         nombre: "Remera Mercedes Negra",
         precio: 149999,
-        stock: 6,
+        stock: 12,
         descripcion: "Material: 100% Poliéster - Origen Camboya",
         categoria: "Unisex",
+        talles: {
+            XS: 0,
+            S: 2,
+            M: 1,
+            L: 9,
+            XL: 0,
+            XXL: 0
+        },
         imgFront: "assets/adidas-5.png",
         imgBack: "assets/adidas-5-atras.png"
     },
@@ -59,9 +99,17 @@ const myProducts = [
         id: 6,
         nombre: "Remera Lacoste Verde",
         precio: 130000,
-        stock: 1,
+        stock: 3,
         descripcion: "Material: 100% Algodón - Origen Perú",
         categoria: "Hombre",
+        talles: {
+            XS: 0,
+            S: 1,
+            M: 0,
+            L: 0,
+            XL: 0,
+            XXL: 2
+        },
         imgFront: "assets/lacoste-6.png",
         imgBack: "assets/lacoste-6-atras.png"
     },
@@ -69,9 +117,17 @@ const myProducts = [
         id: 7,
         nombre: "Remera Lacoste Azulino",
         precio: 130000,
-        stock: 1,
+        stock: 9,
         descripcion: "Material: 100% Algodón - Origen Perú",
         categoria: "Unisex",
+        talles: {
+            XS: 2,
+            S: 0,
+            M: 2,
+            L: 1,
+            XL: 4,
+            XXL: 0
+        },
         imgFront: "assets/lacoste-7.png",
         imgBack: "assets/lacoste-7-atras.png"
     },
@@ -79,9 +135,17 @@ const myProducts = [
         id: 8,
         nombre: "Camiseta Boca Adidas Azul",
         precio: 119999,
-        stock: 1,
+        stock: 17,
         descripcion: "Material: 100% Poliéster - Industria Argentina Industria Argentina",
         categoria: "Unisex",
+        talles: {
+            XS: 0,
+            S: 3,
+            M: 0,
+            L: 9,
+            XL: 5,
+            XXL: 0
+        },
         imgFront: "assets/adidas-8.png",
         imgBack: "assets/adidas-8-atras.png"
     },
@@ -89,9 +153,17 @@ const myProducts = [
         id: 9,
         nombre: "Remera Puma Dress Code",
         precio: 119999,
-        stock: 1,
+        stock: 3,
         descripcion: "Material: 100% Poliéster - Origen Camboya",
         categoria: "Unisex",
+        talles: {
+            XS: 0,
+            S: 1,
+            M: 0,
+            L: 2,
+            XL: 0,
+            XXL: 0
+        },
         imgFront: "assets/puma-9.png",
         imgBack: "assets/puma-9-atras.png"
     },
@@ -99,9 +171,17 @@ const myProducts = [
         id: 10,
         nombre: "Camiseta Arg 50 Aniversario",
         precio: 109999,
-        stock: 1,
+        stock: 24,
         descripcion: "Material: 100% Poliéster reciclado - Industria Argentina Industria Argentina",
         categoria: "Niños",
+        talles: {
+            XS: 10,
+            S: 9,
+            M: 0,
+            L: 5,
+            XL: 0,
+            XXL: 0
+        },
         imgFront: "assets/adidas-10.png",
         imgBack: "assets/adidas-10-atras.png"
     },
@@ -112,6 +192,14 @@ const myProducts = [
         stock: 1,
         descripcion: "Material: Malla: 81% Poliéster. 19% spandex. | Paneles: 83% Poliéster. 17%Spandex. - Origen Vietnam",
         categoria: "Mujer",
+        talles: {
+            XS: 0,
+            S: 0,
+            M: 1,
+            L: 0,
+            XL: 0,
+            XXL: 0
+        },
         imgFront: "assets/nike-11.png",
         imgBack: "assets/nike-11-atras.png"
     },
@@ -119,9 +207,17 @@ const myProducts = [
         id: 12,
         nombre: "Remera Adidas Multicolor",
         precio: 83999,
-        stock: 1,
+        stock: 5,
         descripcion: "Material: 100% Algodón - Origen Camboya",
         categoria: "Unisex",
+        talles: {
+            XS: 0,
+            S: 0,
+            M: 4,
+            L: 0,
+            XL: 1,
+            XXL: 0
+        },
         imgFront: "assets/adidas-12.png",
         imgBack: "assets/adidas-12-atras.png"
     },
@@ -129,9 +225,17 @@ const myProducts = [
         id: 13,
         nombre: "Remera Nike Sportswear",
         precio: 83999,
-        stock: 1,
+        stock: 7,
         descripcion: "Material: 100% Algodón - Industria Argentina",
         categoria: "Mujer",
+        talles: {
+            XS: 0,
+            S: 3,
+            M: 2,
+            L: 2,
+            XL: 0,
+            XXL: 0
+        },
         imgFront: "assets/nike-13.png",
         imgBack: "assets/nike-13-atras.png"
     },
@@ -139,9 +243,17 @@ const myProducts = [
         id: 14,
         nombre: "Camiseta Liverpool Nike",
         precio: 79999,
-        stock: 1,
+        stock: 8,
         descripcion: "Material: 100% Poliéster - Origen Vietnam",
         categoria: "Unisex",
+        talles: {
+            XS: 1,
+            S: 0,
+            M: 4,
+            L: 0,
+            XL: 0,
+            XXL: 3
+        },
         imgFront: "assets/nike-14.png",
         imgBack: "assets/nike-14-atras.png"
     },
@@ -149,30 +261,58 @@ const myProducts = [
         id: 15,
         nombre: "Remera Manga Larga Puma",
         precio: 74999,
-        stock: 1,
+        stock: 4,
         descripcion: "Material: 100% Poliéster - Origen Camboya",
         categoria: "Mujer",
+        talles: {
+            XS: 3,
+            S: 0,
+            M: 0,
+            L: 1,
+            XL: 0,
+            XXL: 0
+        },
         imgFront: "assets/puma-15.png",
         imgBack: "assets/puma-15-atras.png"
     },
 ]
 
-// Incrementamos un navbar de bootstrap a nuestro documento
+// Incrementamos cards de bootstrap a nuestro documento
 myProducts.map((product) => {
+    // Función para generar los botones de talles disponibles
+    const tallesDisponibles = Object.entries(product.talles)
+        .filter(([talles, cantidad]) => cantidad > 0)
+        // Filtramos los botones de talles disponibles
+        .map(([talle]) => `
+            <button type="button" class="btn btn-outline-secondary btn-talle" style="width: 50px; font-size: 0.7rem;"
+                onclick="agregarAlCarrito(${product.id}, '${talle}')">
+                    ${talle}
+            </button>
+        `).join("");
+        // Creamos el HTML para los botones de talles disponibles
+
     cards.innerHTML += `
         <div class="col-md-3 d-flex justify-content-center">
-            <div class="card producto-card text-center">
+            <div class="card producto-card text-center shadow-lg">
                 <div class="img-container">
-                    <img src="${product.imgFront}" class="card-img-top img-card" alt="Remera Lacoste Crudo"
+                    <img src="${product.imgFront}" class="card-img-top img-card" alt="${product.nombre}"
                         onmouseout="this.src='${product.imgFront}'" 
                         onmouseover="this.src='${product.imgBack}'">
                 </div>
-            <div class="card-body h-50">
-                <h5 class="card-title fw-bold">${product.nombre}</h5>
-                <p class="text-success fw-bold">$${product.precio}</p>
-                <button class="btn btn-outline-primary">Ver producto</button>
+                <div class="card-body h-50">
+                    <h5 class="card-title fw-bold">${product.nombre}</h5>
+                    <div class="list-group mb-3">
+                        <div class="list-group-item fw-bold text-secondary">
+                            Talles Disponibles
+                        </div>
+                        <div class="list-group-item d-flex justify-content-center flex-wrap gap-2 badge text-align-center">
+                            ${tallesDisponibles || '<span class="text-muted">Sin stock</span>'}
+                        </div>
+                    </div>
+                    <p class="text-success fw-bold">$${product.precio}</p>
+                    <button class="btn btn-outline-primary">Ver producto</button>
+                </div>
             </div>
         </div>
-    </div>
     `;
 });

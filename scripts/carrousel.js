@@ -3,6 +3,7 @@
 // Accedemos al elemento que contiene el contenido de la carrusel
 const carousel = document.getElementById("carousel");
 
+// Incrementamos un carrusel de bootstrap a nuestro documento
 carousel.innerHTML += `
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">

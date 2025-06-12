@@ -58,7 +58,7 @@ navBar.innerHTML += `
                         <li class="nav-item">
                             <a class="nav-link active text-danger fw-bold" id="logoutLink" aria-current="page" href="#" onclick="logOut()">Cerrar Sesion</a>
                         </li>
-                        <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" href="#">
+                        <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" onclick="abrirModal()">
                             <i class="bi bi-cart4"></i>
                         </a>
                     </div>
@@ -91,3 +91,11 @@ if (authUser) {
     registerLink.style.display = "flex";
     logoutLink.style.display = "none";
 }
+
+// Funcion para abrir el modal de carrito
+function abrirModal() {
+    const modal = new bootstrap.Modal(document.getElementById("carritoModal"));
+    actualizarModal();
+    modal.show();
+}
+
