@@ -7,18 +7,25 @@ const navBar = document.getElementById("navContainer");
 let urlHome;
 let urlRegister;
 let urlLogin;
+let urlHombres;
+let urlMujeres;
+let urlNiños;
 
 // Condicional para asignar las rutas de nuestra pagina <a> </a>
-if (window.location.href == 'http://127.0.0.1:5500/index.html'
-    || window.location.href == 'http://127.0.0.1:5500/index.html#'
-    || window.location.href == 'http://127.0.0.1:5500/index.html?') {
+if (window.location.href == 'http://127.0.0.1:5500/index.html') {
     urlHome = './index.html';
     urlRegister = './pages/register.html';
     urlLogin = './pages/login.html';
+    urlHombres = './pages/hombre.html';
+    urlMujeres = './pages/mujeres.html';
+    urlNiños = './pages/niños.html';
 } else {
     urlHome = '../index.html';
     urlRegister = '../pages/register.html';
     urlLogin = '../pages/login.html';
+    urlHombres = '../pages/hombre.html';
+    urlMujeres = '../pages/mujeres.html';
+    urlNiños = '../pages/niños.html';
 }
 
 // Accedemos al AUTH USER del localStorage (usuarios registrados)
@@ -39,13 +46,13 @@ navBar.innerHTML += `
                     </li>
                     <div class="d-flex gap-5 justify-content-end" style="width: 40rem;">
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="womenLink" aria-current="page" href="#">Mujeres</a>
+                            <a class="nav-link active fw-medium" id="womenLink" aria-current="page" href="${urlMujeres}">Mujeres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="menLink" aria-current="page" href="#">Hombres</a>
+                            <a class="nav-link active fw-medium" id="menLink" aria-current="page" href="${urlHombres}">Hombres</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="kidsLink" aria-current="page" href="#">Niños</a>
+                            <a class="nav-link active fw-medium" id="kidsLink" aria-current="page" href="${urlNiños}">Niños</a>
                         </li>
                     </div>
                     <div class="d-flex justify-content-end gap-3 align-items-center" style="width: 30rem;">
@@ -99,3 +106,16 @@ function abrirModal() {
     modal.show();
 }
 
+// Aplicar estilos según la sección activa
+resaltarLink("menLink", "http://127.0.0.1:5500/pages/hombre.html");
+resaltarLink("womenLink", "http://127.0.0.1:5500/pages/mujeres.html");
+resaltarLink("kidsLink", "http://127.0.0.1:5500/pages/ni%C3%B1os.html");
+
+// Función para aplicar estilos al link activo
+function resaltarLink(id, urlMatch) {
+    if (window.location.href.startsWith(urlMatch)) {
+        const link = document.getElementById(id);
+        link.style.color = "#867960";
+        link.style.borderBottom = "2px solid rgb(88, 76, 53)";
+    }
+}

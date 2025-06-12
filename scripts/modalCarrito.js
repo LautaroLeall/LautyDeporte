@@ -14,7 +14,7 @@ modal.innerHTML += `
                 </div>
                 <div class="modal-body">
                     <ul id="lista-carrito" class="list-group"></ul>
-                    <h5 class="text-end">Total: $<span id="total-carrito">0</span></h5>
+                    <h5 class="text-end text-secondary fw-bold">Total: $<span id="total-carrito">0</span></h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cerrar</button>
