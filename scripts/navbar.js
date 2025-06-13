@@ -7,25 +7,25 @@ const navBar = document.getElementById("navContainer");
 let urlHome;
 let urlRegister;
 let urlLogin;
-let urlHombres;
-let urlMujeres;
-let urlNiños;
+let urlZapatillas;
+let urlIndumentaria;
+let urlAccessorios;
 
 // Condicional para asignar las rutas de nuestra pagina <a> </a>
 if (window.location.href == 'http://127.0.0.1:5500/index.html') {
     urlHome = './index.html';
     urlRegister = './pages/register.html';
     urlLogin = './pages/login.html';
-    urlHombres = './pages/hombre.html';
-    urlMujeres = './pages/mujeres.html';
-    urlNiños = './pages/niños.html';
+    urlZapatillas = './pages/zapatilla.html';
+    urlIndumentaria = './pages/indumentaria.html';
+    urlAccessorios = './pages/accesorios.html';
 } else {
     urlHome = '../index.html';
     urlRegister = '../pages/register.html';
     urlLogin = '../pages/login.html';
-    urlHombres = '../pages/hombre.html';
-    urlMujeres = '../pages/mujeres.html';
-    urlNiños = '../pages/niños.html';
+    urlZapatillas = '../pages/zapatilla.html';
+    urlIndumentaria = '../pages/indumentaria.html';
+    urlAccessorios = '../pages/accesorios.html';
 }
 
 // Accedemos al AUTH USER del localStorage (usuarios registrados)
@@ -46,24 +46,36 @@ navBar.innerHTML += `
                     </li>
                     <div class="d-flex gap-5 justify-content-end" style="width: 40rem;">
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="womenLink" aria-current="page" href="${urlMujeres}">Mujeres</a>
+                            <a class="nav-link active fw-medium" id="indumentariaLink" aria-current="page" href="${urlIndumentaria}">
+                                Indumentaria
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="menLink" aria-current="page" href="${urlHombres}">Hombres</a>
+                            <a class="nav-link active fw-medium" id="zapatillasLink" aria-current="page" href="${urlZapatillas}">
+                                Zapatillas
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="kidsLink" aria-current="page" href="${urlNiños}">Niños</a>
+                            <a class="nav-link active fw-medium" id="accesoriosLink" aria-current="page" href="${urlAccessorios}">
+                                Accesorios
+                            </a>
                         </li>
                     </div>
                     <div class="d-flex justify-content-end gap-3 align-items-center" style="width: 30rem;">
                         <li class="nav-item">
-                            <a class="nav-link active text-success fw-bold" id="loginLink" aria-current="page" href="${urlLogin}">Iniciar Sesion</a>
+                            <a class="nav-link active text-success fw-bold" id="loginLink" aria-current="page" href="${urlLogin}">
+                                Iniciar Sesion
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-success fw-bold" id="registerLink" aria-current="page" href="${urlRegister}">Registrarse</a>
+                            <a class="nav-link active text-success fw-bold" id="registerLink" aria-current="page" href="${urlRegister}">
+                                Registrarse
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-danger fw-bold" id="logoutLink" aria-current="page" href="#" onclick="logOut()">Cerrar Sesion</a>
+                            <a class="nav-link active text-danger fw-bold" id="logoutLink" aria-current="page" href="#" onclick="logOut()">
+                                Cerrar Sesion
+                            </a>
                         </li>
                         <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" onclick="abrirModal()">
                             <i class="bi bi-cart4"></i>
@@ -107,9 +119,9 @@ function abrirModal() {
 }
 
 // Aplicar estilos según la sección activa
-resaltarLink("menLink", "http://127.0.0.1:5500/pages/hombre.html");
-resaltarLink("womenLink", "http://127.0.0.1:5500/pages/mujeres.html");
-resaltarLink("kidsLink", "http://127.0.0.1:5500/pages/ni%C3%B1os.html");
+resaltarLink("zapatillasLink", "http://127.0.0.1:5500/pages/zapatilla.html");
+resaltarLink("indumentariaLink", "http://127.0.0.1:5500/pages/indumentaria.html");
+resaltarLink("accesoriosLink", "http://127.0.0.1:5500/pages/accesorios.html");
 
 // Función para aplicar estilos al link activo
 function resaltarLink(id, urlMatch) {
