@@ -23,11 +23,38 @@ LautyDeporte es una aplicación web estática que simula un e-commerce de ropa d
 ```
 LautyDeporte/
 │
-├── assets/ # Imágenes y logo
-├── pages/ # Subpáginas
-├── scripts/ # JS modular
-├── styles/ # Archivos CSS personalizados
-└── index.html # Página principal
+├── assets/ 
+│   ├── accessorios/ # Productos de accesorios
+│   ├── carousel/ # Carousel
+│   ├── indumentaria/ # Productos de indumentaria
+│   ├── zapatillas/ # Productos de zapatillas
+│   ├── lldp-footer.png
+|   └── logo-head.png 
+├── pages/
+│   ├── accessorios.html
+│   ├── indumentaria.html
+│   ├── login.html
+│   ├── register.html
+│   └── zapatillas.html
+├── scripts/ 
+│   ├── cards.js
+│   ├── cardsA.js # Productos de accesorios
+│   ├── cardsI.js # Productos de indumentaria
+│   ├── cardsZ.js # Productos de zapatillas
+│   ├── carousel.js
+│   ├── footer.js
+│   ├── login.js # Script para el login
+│   ├── modalCarrito.js
+│   ├── navbar.js
+│   └── register.js # Script para el registro
+├── styles/
+│   ├── card.css
+│   ├── cardPages.css
+│   ├── carousel.css
+│   ├── footer.css
+│   ├── formulario.css
+│   └── navbar.css
+└── index.html
 ```
 
 ## ⚙️ Cómo usar
