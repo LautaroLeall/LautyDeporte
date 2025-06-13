@@ -279,129 +279,112 @@ const myProducts = [
     // ZAPATILLAS
     {
         id: 16,
-        nombre: "Remera Lacoste Crudo",
-        precio: 150000,
-        stock: 20,
-        descripcion: "Material: 100% Algodón - Origen Perú",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 0,
-            S: 4,
-            M: 6,
-            L: 8,
-            XL: 2,
-            XXL: 0
+        nombre: "Zapatillas Lacoste AG-LT23",
+        precio: 320000,
+        stock: 13,
+        descripcion: "Capellada: Textil, Sintético - Forro: Textil - Suela: Caucho Sintético - Origen Vietnam",
+        categoria: "Zapatillas",
+        talles: { 
+            38: 3,
+            40: 4,
+            41: 3,
+            43: 3
         },
-        imgFront: "assets/lacoste-1.png",
-        imgBack: "assets/lacoste-1-atras.png"
+        imgFront: "assets/zapatillas/lacoste-1.png",
+        imgBack: "assets/zapatillas/lacoste-1-atras.png"
     },
     {
         id: 17,
-        nombre: "Remera Lacoste Blanca",
-        precio: 170000,
-        stock: 6,
-        descripcion: "Material: 96% Algodón Orgánico, 4% Elastano - Origen Turquía",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 2,
-            S: 0,
-            M: 1,
-            L: 0,
-            XL: 3,
-            XXL: 0
+        nombre: "Zapatillas Lacoste AG-LT25",
+        precio: 320000,
+        stock: 18,
+        descripcion: "Capellada: Textil, Sintético - Forro: Textil, Sintético - Suela: Caucho - Origen Vietnam",
+        categoria: "Zapatillas",
+        talles: { 
+            36: 5,
+            38: 4,
+            39: 6,
+            40: 3
         },
-        imgFront: "assets/lacoste-2.png",
-        imgBack: "assets/lacoste-2-atras.png"
+        imgFront: "assets/zapatillas/lacoste-2.png",
+        imgBack: "assets/zapatillas/lacoste-2-atras.png"
     },
     {
         id: 18,
-        nombre: "Remera Lacoste Blanca",
-        precio: 170000,
-        stock: 16,
-        descripcion: "Material: 100% Algodón - Origen Perú",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 0,
-            S: 3,
-            M: 1,
-            L: 5,
-            XL: 0,
-            XXL: 7
+        nombre: "Zapatillas Lacoste Lineshot",
+        precio: 280000,
+        stock: 12,
+        descripcion: "Capellada: Cuero Vacuno Flor, Cuero Vacuno Descarne - Forro: Textil - Suela: Caucho - Origen Tailandia",
+        categoria: "Zapatillas",
+        talles: { 
+            41: 5,
+            43: 1,
+            44: 4,
+            45: 2
         },
-        imgFront: "assets/lacoste-3.png",
-        imgBack: "assets/lacoste-3-atras.png"
+        imgFront: "assets/zapatillas/lacoste-3.png",
+        imgBack: "assets/zapatillas/lacoste-3-atras.png"
     },
     {
         id: 19,
-        nombre: "Remera MU '91 Blanca",
-        precio: 159999,
-        stock: 8,
-        descripcion: "Material: 100% Poliéster - Origen Camboya",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 0,
-            S: 0,
-            M: 2,
-            L: 0,
-            XL: 6,
-            XXL: 0
+        nombre: "Zapatillas Adidas Adizero",
+        precio: 259999,
+        stock: 6,
+        descripcion: "Capellada: Textil, Sintético - Forro: Textil, Sintético - Suela: Caucho - Origen Vietnam",
+        categoria: "Zapatillas",
+        talles: { 
+            41: 5,
+            43: 1,
         },
-        imgFront: "assets/adidas-4.png",
-        imgBack: "assets/adidas-4-atras.png"
+        imgFront: "assets/zapatillas/adidas-4.png",
+        imgBack: "assets/zapatillas/adidas-4-atras.png"
     },
     {
         id: 20,
-        nombre: "Remera Mercedes Negra",
-        precio: 149999,
-        stock: 12,
-        descripcion: "Material: 100% Poliéster - Origen Camboya",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 0,
-            S: 2,
-            M: 1,
-            L: 9,
-            XL: 0,
-            XXL: 0
+        nombre: "Zapatillas Adidas Ultraboost",
+        precio: 249999,
+        stock: 13,
+        descripcion: "Capellada: Textil - Forro: Textil - Suela: Caucho - Origen China",
+        categoria: "Zapatillas",
+        talles: { 
+            40: 5,
+            41: 4,
+            43: 1,
+            44: 3,
         },
-        imgFront: "assets/adidas-5.png",
-        imgBack: "assets/adidas-5-atras.png"
+        imgFront: "assets/zapatillas/adidas-5.png",
+        imgBack: "assets/zapatillas/adidas-5-atras.png"
     },
     {
         id: 21,
-        nombre: "Remera Lacoste Verde",
-        precio: 130000,
-        stock: 3,
-        descripcion: "Material: 100% Algodón - Origen Perú",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 0,
-            S: 1,
-            M: 0,
-            L: 0,
-            XL: 0,
-            XXL: 2
+        nombre: "Zapatillas Adidas Ultraboost",
+        precio: 249999,
+        stock: 14,
+        descripcion: "Capellada: Textil - Forro: Textil - Suela: Caucho - Origen China",
+        categoria: "Zapatillas",
+        talles: { 
+            37: 2,
+            39: 7,
+            41: 4,
+            43: 1,
         },
-        imgFront: "assets/lacoste-6.png",
-        imgBack: "assets/lacoste-6-atras.png"
+        imgFront: "assets/zapatillas/adidas-6.png",
+        imgBack: "assets/zapatillas/adidas-6-atras.png"
     },
     {
         id: 22,
-        nombre: "Remera Lacoste Azulino",
-        precio: 130000,
-        stock: 9,
-        descripcion: "Material: 100% Algodón - Origen Perú",
-        categoria: "Indumentaria",
-        talles: {
-            XS: 2,
-            S: 0,
-            M: 2,
-            L: 1,
-            XL: 4,
-            XXL: 0
+        nombre: "Zapatillas Nike Pegasus",
+        precio: 249999,
+        stock: 7,
+        descripcion: "Capellada: Textil - Forro: Textil - Suela: Caucho - Origen China",
+        categoria: "Zapatillas",
+        talles: { 
+            38: 2,
+            41: 4,
+            43: 1,
         },
-        imgFront: "assets/lacoste-7.png",
-        imgBack: "assets/lacoste-7-atras.png"
+        imgFront: "assets/zapatillas/nike-7.png",
+        imgBack: "assets/zapatillas/nike-7-atras.png"
     },
     {
         id: 23,
@@ -554,7 +537,7 @@ myProducts.map((product) => {
     // Función para generar los botones de talles disponibles
     const tallesDisponibles = Object.entries(product.talles)
         .filter(([talles, cantidad]) => cantidad > 0)
-        // Filtramos los botones de talles disponibles
+        // Filtramos los botones de talles disponibles (INDUMENTARIA)
         .map(([talle]) => `
             <button type="button" class="btn btn-outline-secondary btn-talle" style="width: 50px; font-size: 0.7rem;"
                 onclick="agregarAlCarrito(${product.id}, '${talle}')">
