@@ -1,6 +1,6 @@
 # 🏋️ LautyDeporte
 
-LautyDeporte es una aplicación web estática que simula un e-commerce de ropa deportiva. Incluye navegación por categorías (hombres, mujeres y niños), login/register, visualización de productos por cards, un carrusel principal y un modal de carrito interactivo.
+**LautyDeporte** es una aplicación web estática que simula un *e-commerce de ropa deportiva*. Incluye navegación por categorías (Indumentaria, Zapatillas, Accesorios), Login/Register (para poder Cerrar Sesión también), en cada seccion de las categorias cuanta con un filtro para ordenar los productos por Nombre/Precio y un modal de carrito interactivo.
 
 ## 🚀 Características
 
@@ -8,7 +8,7 @@ LautyDeporte es una aplicación web estática que simula un e-commerce de ropa d
 - 🛒 Carrito con modal emergente, resumen de compra y eliminación de ítems.
 - 🎠 Carrusel de imágenes destacadas en la portada.
 - 👤 Formulario de login y registro (frontend).
-- 🧭 Navegación por secciones: hombres, mujeres, niños.
+- 🧭 Navegación por secciones: Indumentaria, Zapatillas, Accesorios.
 - 🎨 Estilos personalizados con CSS y Bootstrap.
 
 ## 🛠️ Tecnologías utilizadas
@@ -21,45 +21,44 @@ LautyDeporte es una aplicación web estática que simula un e-commerce de ropa d
 ## 📁 Estructura de carpetas
 
 ```
-LautyDeporte/
-│
-├── assets/ 
-│   ├── accessorios/ # Productos de accesorios
-│   ├── carousel/ # Carousel
-│   ├── indumentaria/ # Productos de indumentaria
-│   ├── zapatillas/ # Productos de zapatillas
-│   ├── lldp-footer.png
-|   └── logo-head.png 
-├── pages/
-│   ├── accessorios.html
-│   ├── indumentaria.html
-│   ├── login.html
-│   ├── register.html
-│   └── zapatillas.html
-├── scripts/ 
-│   ├── cards.js
-│   ├── cardsA.js # Productos de accesorios
-│   ├── cardsI.js # Productos de indumentaria
-│   ├── cardsZ.js # Productos de zapatillas
-│   ├── carousel.js
-│   ├── footer.js
-│   ├── login.js # Script para el login
-│   ├── modalCarrito.js
-│   ├── navbar.js
-│   └── register.js # Script para el registro
-├── styles/
-│   ├── card.css
-│   ├── cardPages.css
-│   ├── carousel.css
-│   ├── footer.css
-│   ├── formulario.css
-│   └── navbar.css
-└── index.html
+   LautyDeporte/
+   │
+   ├── assets/
+   │   ├── accessorios/ # Productos de accesorios
+   │   ├── carousel/ # Carousel
+   │   ├── indumentaria/ # Productos de indumentaria
+   │   ├── zapatillas/ # Productos de zapatillas
+   │   ├── lldp-footer.png
+   |   └── logo-head.png
+   ├── pages/
+   │   ├── accessorios.html
+   │   ├── indumentaria.html
+   │   ├── login.html
+   │   ├── register.html
+   │   └── zapatillas.html
+   ├── scripts/
+   │   ├── cards.js
+   │   ├── cardsA.js # Productos de accesorios
+   │   ├── cardsI.js # Productos de indumentaria
+   │   ├── cardsZ.js # Productos de zapatillas
+   │   ├── carousel.js
+   │   ├── footer.js
+   │   ├── login.js # Script para el login
+   │   ├── modalCarrito.js
+   │   ├── navbar.js
+   │   └── register.js # Script para el registro
+   ├── styles/
+   │   ├── card.css
+   │   ├── cardPages.css
+   │   ├── carousel.css
+   │   ├── footer.css
+   │   ├── formulario.css
+   │   └── navbar.css
+   └── index.html
 ```
 
 ## ⚙️ Cómo usar
 
-1. Cloná el repo:
-   ```bash
+```bash
    git clone https://github.com/LautaroLeall/LautyDeporte.git
-   ```
+```
