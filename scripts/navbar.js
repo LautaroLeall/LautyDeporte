@@ -21,11 +21,11 @@ if (window.location.href == 'http://127.0.0.1:5500/index.html') {
     urlAccessorios = './pages/accesorios.html';
 } else {
     urlHome = '../index.html';
-    urlRegister = '../pages/register.html';
-    urlLogin = '../pages/login.html';
-    urlZapatillas = '../pages/zapatilla.html';
-    urlIndumentaria = '../pages/indumentaria.html';
-    urlAccessorios = '../pages/accesorios.html';
+    urlRegister = '/pages/register.html';
+    urlLogin = '/pages/login.html';
+    urlZapatillas = '/pages/zapatilla.html';
+    urlIndumentaria = '/pages/indumentaria.html';
+    urlAccessorios = '/pages/accesorios.html';
 }
 
 // Accedemos al AUTH USER del localStorage (usuarios registrados)
@@ -95,7 +95,7 @@ const logoutLink = document.getElementById("logoutLink");
 const logOut = () => {
     // Eliminamos el AUTH USER del localStorage
     localStorage.removeItem('authUser');
-    window.location.href = "./pages/login.html";
+    window.location.href = "/pages/login.html";
 }
 
 // Condicional para mostrar los botones según el estado de autenticación
