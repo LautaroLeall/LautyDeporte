@@ -1,9 +1,6 @@
 // CARDS INDUMENTARIA
 
-// Accedemos al elemento que contiene el contenido de las Cards
-const cards = document.getElementById("cards");
-
-// Creamos un array con los datos de las cartas
+// Creamos un array con los datos de las cartas (INDUMENTARIA)
 const myProducts = [
     {
         id: 1,
@@ -277,22 +274,28 @@ const myProducts = [
     }
 ];
 
+// Accedemos al elemento que contiene el contenido de las Cards
+const cards = document.getElementById("cards");
+
+function mezclarArray(arr) {
+    return arr.sort(() => Math.random() - 0.5);
+}
 
 // Incrementamos cards de bootstrap a nuestro documento
-myProducts.map((product) => {
-    // Función para generar los botones de talles disponibles
-    const tallesDisponibles = Object.entries(product.talles)
-        .filter(([talles, cantidad]) => cantidad > 0)
-        // Filtramos los botones de talles disponibles
-        .map(([talle]) => `
-            <button type="button" class="btn btn-outline-secondary btn-talle" style="width: 50px; font-size: 0.7rem;"
-                onclick="agregarAlCarrito(${product.id}, '${talle}')">
-                    ${talle}
-            </button>
-        `).join("");
-    // Creamos el HTML para los botones de talles disponibles
+function renderizarCards(productos) {
+    cards.innerHTML = "";
 
-    cards.innerHTML += `
+    productos.forEach((product) => {
+        const tallesDisponibles = Object.entries(product.talles)
+            .filter(([_, cantidad]) => cantidad > 0)
+            .map(([talle]) => `
+                <button type="button" class="btn btn-outline-secondary btn-talle" style="width: 50px; font-size: 0.7rem;"
+                    onclick="agregarAlCarrito(${product.id}, '${talle}')">
+                        ${talle}
+                </button>
+            `).join("");
+
+        cards.innerHTML += `
         <div class="col-md-3 d-flex justify-content-center">
             <div class="card producto-card text-center shadow-lg">
                 <div class="img-container">
@@ -307,7 +310,7 @@ myProducts.map((product) => {
                             Talles Disponibles
                         </div>
                         <div class="list-group-item d-flex justify-content-center flex-wrap gap-2 badge text-align-center">
-                            ${tallesDisponibles || '<span class="text-muted">Sin stock</span>'}
+                            ${tallesDisponibles || '<span class="text-muted badge border border-secondary fs-7">Sin stock</span>'}
                         </div>
                     </div>
                     <p class="text-success fw-bold">$${product.precio}</p>
@@ -316,4 +319,9 @@ myProducts.map((product) => {
             </div>
         </div>
     `;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarCards(mezclarArray([...myProducts]));
 });
