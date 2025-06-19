@@ -1,22 +1,22 @@
-#navContainer{
+#navContainer {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1;
 }
 
-.navbar{
+.navbar {
     background-color: hwb(60 56% 44% / 0.6);
     height: 65px;
 }
 
-#homeLink{
+#homeLink {
     transition: all 0.3s ease-in-out;
     font-size: 1.2rem;
 }
 
-#homeLink:hover{
+#homeLink:hover {
     color: white;
     transition: all 0.3s ease-in-out;
     transform: scale(1.2);
@@ -40,7 +40,7 @@
 #profileLink,
 #loginLink,
 #logoutLink,
-#registerLink{
+#registerLink {
     transition: all 0.3s ease-in-out;
     font-size: 1.2rem;
 }
@@ -48,7 +48,7 @@
 #profileLink:hover,
 #loginLink:hover,
 #logoutLink:hover,
-#registerLink:hover{
+#registerLink:hover {
     transition: all 0.3s ease-in-out;
     transform: scale(1.2);
 }
