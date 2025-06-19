@@ -24,12 +24,7 @@
    LautyDeporte/
    │
    ├── assets/
-   │   ├── accessorios/ # Productos de accesorios
-   │   ├── carousel/ # Carousel
-   │   ├── indumentaria/ # Productos de indumentaria
-   │   ├── zapatillas/ # Productos de zapatillas
-   │   ├── lldp-footer.png
-   |   └── logo-head.png
+   │   └── # Imagenes
    ├── pages/
    │   ├── accessorios.html
    │   ├── indumentaria.html
@@ -38,15 +33,15 @@
    │   └── zapatillas.html
    ├── scripts/
    │   ├── cards.js
-   │   ├── cardsA.js # Productos de accesorios
-   │   ├── cardsI.js # Productos de indumentaria
-   │   ├── cardsZ.js # Productos de zapatillas
+   │   ├── cardsA.js # Accesorios 
+   │   ├── cardsI.js # Indumentaria 
+   │   ├── cardsZ.js # Zapatillas
    │   ├── carousel.js
    │   ├── footer.js
-   │   ├── login.js # Script para el login
+   │   ├── login.js
    │   ├── modalCarrito.js
    │   ├── navbar.js
-   │   └── register.js # Script para el registro
+   │   └── register.js
    ├── styles/
    │   ├── card.css
    │   ├── cardPages.css
