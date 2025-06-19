@@ -23,8 +23,7 @@
 ```
    LautyDeporte/
    │
-   ├── assets/
-   │   └── # Imagenes
+   ├── assets/      # Imagenes
    ├── pages/
    │   ├── accessorios.html
    │   ├── indumentaria.html
@@ -33,9 +32,9 @@
    │   └── zapatillas.html
    ├── scripts/
    │   ├── cards.js
-   │   ├── cardsA.js # Accesorios 
-   │   ├── cardsI.js # Indumentaria 
-   │   ├── cardsZ.js # Zapatillas
+   │   ├── cardsA.js       # Accesorios 
+   │   ├── cardsI.js       # Indumentaria 
+   │   ├── cardsZ.js       # Zapatillas
    │   ├── carousel.js
    │   ├── footer.js
    │   ├── login.js
