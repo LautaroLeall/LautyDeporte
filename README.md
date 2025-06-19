@@ -23,7 +23,7 @@
 ```
    LautyDeporte/
    │
-   ├── assets/      # Imagenes
+   ├── assets/             # Imagenes
    ├── pages/
    │   ├── accessorios.html
    │   ├── indumentaria.html
