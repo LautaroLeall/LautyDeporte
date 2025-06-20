@@ -29,7 +29,7 @@ filter.innerHTML = `
 // Evento de cambio para ordenar productos
 document.getElementById("ordenarProductos").addEventListener("change", (event) => {
     const criterio = event.target.value;
-    let productosOrdenados = [...myProducts];
+    let productosOrdenados = [...products];
 
     switch (criterio) {
         case "nombre-asc":
@@ -43,7 +43,7 @@ document.getElementById("ordenarProductos").addEventListener("change", (event) =
             break;
         default:
             // Podés volver a mezclarlos si querés aleatoriedad por defecto
-            productosOrdenados = mezclarArray([...myProducts]);
+            productosOrdenados = mezclarArray([...products]);
     }
 
     // Llama a la función que renderiza las cards
