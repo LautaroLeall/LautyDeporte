@@ -26,33 +26,40 @@
     <main>
         <div class="formulario container-fluid">
             <div class="row justify-content-center">
-                <form class="col-4 border border-dark rounded p-3 bg-light" onsubmit="handleSubmit(event)">
-                    <div class="mb-1">
+                <!-- Formulario de registro -->
+                <form class="col-12 col-md-6 col-lg-4 border border-dark rounded p-4 bg-light shadow"
+                    onsubmit="handleSubmit(event)">
+                
+                    <div class="mb-2">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre" maxlength="15"
                             minlength="3" required onchange="handleChange(event)">
                         <small class="error"></small>
                     </div>
-                    <div class="mb-1">
+
+                    <div class="mb-2">
                         <label for="lastName" class="form-label">Apellido</label>
                         <input type="text" class="form-control" id="lastName" placeholder="Ingresa tu apellido"
                             maxlength="20" minlength="3" required onchange="handleChange(event)">
                         <small class="error"></small>
                     </div>
-                    <div class="mb-1">
+
+                    <div class="mb-2">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Ingresa tu email"
                             maxlength="30" minlength="6" required onchange="handleChange(event)">
                         <small class="error"></small>
                     </div>
-                    <div class="mb-1">
+
+                    <div class="mb-2">
                         <label for="userName" class="form-label">Nombre de Usuario</label>
                         <input type="text" class="form-control" id="userName" placeholder="Ingresa tu Nombre de Usuario"
                             maxlength="20" minlength="5" required onchange="handleChange(event)">
                         <small class="error"></small>
                     </div>
-                    <div class="mb-1">
-                        <label for="password" class="form-label">Contraseña</label>
+
+                    <div class="mb-2">
+                        <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group">
                             <input type="password" class="form-control" id="password"
                                 placeholder="Ingresa tu contraseña" maxlength="25" minlength="8" required
@@ -65,8 +72,9 @@
                         </div>
                         <small class="error"></small>
                     </div>
+
                     <div class="mb-3">
-                        <label for="repeatPassword" class="form-label">Repetir Contraseña</label>
+                        <label for="repeatPassword" class="form-label">Repetir Contraseña</label>
                         <div class="input-group">
                             <input type="password" class="form-control" id="repeatPassword"
                                 placeholder="Ingresa tu contraseña de nuevo" maxlength="25" minlength="8" required
@@ -79,13 +87,18 @@
                         </div>
                         <small class="error"></small>
                     </div>
-                    <div class="justify-content-center d-flex">
-                        <button type="submit" id="submit" class="btn btn-outline-dark" disabled>Registrarme</button>
+
+                    <div class="text-center">
+                        <button type="submit" id="submit" class="btn btn-outline-dark px-4" disabled>
+                            Registrarme
+                        </button>
                     </div>
+                    
                 </form>
+                <script src="/scripts/register.js"></script>
             </div>
         </div>
-        <script src="/scripts/register.js"></script>
+
         <div id="modal">
             <script src="/scripts/modalCarrito.js"></script>
         </div>

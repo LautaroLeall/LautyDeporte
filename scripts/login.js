@@ -1,81 +1,39 @@
 // LOGIN
 
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+// Obtenemos los elementos del DOM
+const loginInput = document.getElementById("loginInput"); // Email o nombre de usuario
+const passwordInput = document.getElementById("password"); // Contraseña
 const loginButton = document.getElementById("submit");
-
-// EXPRECION REGULAR PARA VALIDAR EL FORMULARIO / INPUTS
-const regexEmail = /^[\w]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)*(\.[a-z]{2,4})$/;
-const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,25}$/;
-
-const validateSubmit = () => {
-    const isEmailValid = regexEmail.test(email.value); // Validamos el email
-    const isPasswordValid = regexPassword.test(password.value); // Validamos la contraseña
-
-    const validations = isEmailValid && isPasswordValid;
-    return validations;
-}
-
 const error = document.getElementsByClassName("error");
 
-const handleChange = (event) => {
-    const { id, value } = event.target;
-
-    switch (id) {
-        case "email":
-            if (!regexEmail.test(value)) {
-                error[0].innerHTML = "El email debe ser válido (ej: nombre@dominio.com)";
-                error[0].style.color = "red";
-                event.target.style.border = "2px solid red";
-                event.target.style.boxShadow = "0 0 5px 1px red";
-            } else {
-                error[0].innerHTML = "";
-                event.target.style.border = "1px solid green";
-                event.target.style.boxShadow = "0 0 5px 1px green";
-            }
-            break;
-
-        case "password":
-            if (!regexPassword.test(value)) {
-                error[1].innerHTML = "Mín. 8 caracteres con mayúscula, minúscula, número y símbolo.";
-                error[1].style.color = "red";
-                event.target.style.border = "2px solid red";
-                event.target.style.boxShadow = "0 0 5px 1px red";
-            } else {
-                error[1].innerHTML = "";
-                event.target.style.border = "1px solid green";
-                event.target.style.boxShadow = "0 0 5px 1px green";
-            }
-            break;
-    }
-
-    loginButton.disabled = !validateSubmit();
-};
-
-
+// Validamos al enviar el formulario
 const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Evitamos el envío tradicional del formulario
 
-    const arrayUsers = JSON.parse(localStorage.getItem('Usuarios'));
-    // Verificar si el usuario existe
-    const foundUser = arrayUsers.find(user => user.email === email.value.toLowerCase() && user.password === password.value);
-        // .find() devuelve el primer elemento que cumpla la condición
+    const loginValue = loginInput.value.trim().toLowerCase(); // Normalizamos el valor ingresado
+    const passwordValue = passwordInput.value;
+
+    // Verificamos si hay usuarios guardados en localStorage
+    const usersArray = JSON.parse(localStorage.getItem('Usuarios')) || [];
+
+    // Buscamos el usuario por email o userName, y validamos contraseña
+    const foundUser = usersArray.find(user =>
+        (user.email === loginValue || user.userName.toLowerCase() === loginValue) &&
+        user.password === passwordValue
+    );
 
     if (foundUser) {
-        // Si existe, redirigir al index.html (inicio)
-        alert("¡El usuario existe! Bienvenido.");
+        alert(`¡Bienvenido/a ${foundUser.name}!`);
+        // Guardamos el usuario logueado como "authUser"
+        localStorage.setItem('authUser', JSON.stringify(foundUser));
+        // Redireccionamos a la página principal
         window.location.href = "/index.html";
-
-        // Guardar usuario en localStorage
-        const userSerializado = JSON.stringify(foundUser);
-        localStorage.setItem('authUser', userSerializado);
     } else {
-        // Si no existe, redirigir al index.html (inicio)
-        alert("¡El usuario no existe!");
+        alert("El usuario no existe o los datos son incorrectos.\nPor favor, verifica tus credenciales o regístrate.");
     }
-}
+};
 
-// Funcion para mostrar Contraseña
+// Mostrar/Ocultar contraseña
 function togglePassword(id, btn) {
     const input = document.getElementById(id);
     const icon = btn.querySelector('i');

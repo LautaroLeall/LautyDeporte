@@ -35,16 +35,17 @@ const authUser = JSON.parse(localStorage.getItem('authUser'));
 navBar.innerHTML += `
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand disabled text-secondary fw-bold" href="#">LautyDeporte</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll gap-5" style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
-                        <a class="nav-link active fw-bold" id="homeLink" aria-current="page" href="${urlHome}">Inicio</a>
-                    </li>
-                    <div class="d-flex gap-5 justify-content-end" style="width: 40rem;">
+                <ul class="navbar-nav my-lg-0 navbar-nav-scroll w-100 justify-content-around align-items-center">
+                    <div class="d-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" id="homeLink" aria-current="page" href="${urlHome}">LautyDeporte</a>
+                        </li>
+                    </div>
+                    <div class="d-flex gap-5">
                         <li class="nav-item">
                             <a class="nav-link active fw-medium" id="indumentariaLink" aria-current="page" href="${urlIndumentaria}">
                                 Indumentaria
@@ -61,25 +62,32 @@ navBar.innerHTML += `
                             </a>
                         </li>
                     </div>
-                    <div class="d-flex justify-content-end gap-3 align-items-center" style="width: 30rem;">
+                    <div class="d-flex gap-2">
                         <li class="nav-item">
                             <a class="nav-link active text-success fw-bold" id="loginLink" aria-current="page" href="${urlLogin}">
-                                Iniciar Sesion
+                                <i class="bi bi-person-check"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active text-success fw-bold" id="registerLink" aria-current="page" href="${urlRegister}">
-                                Registrarse
+                                <i class="bi bi-person-add"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active text-danger fw-bold" id="logoutLink" aria-current="page" href="#" onclick="logOut()">
-                                Cerrar Sesion
+                                <i class="bi bi-person-dash"></i>
                             </a>
                         </li>
-                        <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" onclick="abrirModal()">
-                            <i class="bi bi-cart4"></i>
-                        </a>
+                        <li class="nav-item">
+                            <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" onclick="abrirModal()">
+                                <i class="bi bi-cart4"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-secondary fw-bold" id="searchLink" aria-current="page" href="#">
+                                <i class="bi bi-search"></i>
+                            </a>
+                        </li>
                     </div>
                 </ul>
             </div>
