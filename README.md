@@ -1,6 +1,6 @@
 # 🏋️ LautyDeporte
 
-**LautyDeporte** es una aplicación web estática que simula un *e-commerce de ropa deportiva*. Incluye navegación por categorías (Indumentaria, Zapatillas, Accesorios), Login/Register (para poder Cerrar Sesión también), en cada seccion de las categorias cuanta con un filtro para ordenar los productos por Nombre/Precio y un modal de carrito interactivo.
+**LautyDeporte** es una aplicación web estática que simula un _e-commerce de ropa deportiva_. Incluye navegación por categorías (Indumentaria, Zapatillas, Accesorios), Login/Register (para poder Cerrar Sesión también), en cada seccion de las categorias cuanta con un filtro para ordenar los productos por Nombre/Precio y un modal de carrito interactivo.
 
 ## 🚀 Características
 
@@ -21,9 +21,10 @@
 ## 📁 Estructura de carpetas
 
 ```
-   LautyDeporte/
-   │
+   LautyDeporte
    ├── assets/             # Imagenes
+   ├── api/
+   │   └── products.js     # Productos
    ├── pages/
    │   ├── accessorios.html
    │   ├── indumentaria.html
@@ -32,8 +33,8 @@
    │   └── zapatillas.html
    ├── scripts/
    │   ├── cards.js
-   │   ├── cardsA.js       # Accesorios 
-   │   ├── cardsI.js       # Indumentaria 
+   │   ├── cardsA.js       # Accesorios
+   │   ├── cardsI.js       # Indumentaria
    │   ├── cardsZ.js       # Zapatillas
    │   ├── carousel.js
    │   ├── footer.js
@@ -43,8 +44,8 @@
    │   └── register.js
    ├── styles/
    │   ├── card.css
-   │   ├── cardPages.css
    │   ├── carousel.css
+   │   ├── filter.css
    │   ├── footer.css
    │   ├── formulario.css
    │   └── navbar.css
@@ -54,5 +55,12 @@
 ## ⚙️ Cómo usar
 
 ```bash
+   # Clonar el repositorio
    git clone https://github.com/LautaroLeall/LautyDeporte.git
+
+   # Entrar en el directorio del proyecto
+   cd LautyDeporte
+
+   # Iniciar el servidor local
+   `index.html`
 ```

@@ -1,45 +1,41 @@
 // CARDS
+// Importamos el array de productos desde el archivo products.js
+import { myProducts } from '../api/products.js';
 
-// Accedemos al elemento que contiene el contenido de las Card
+// Obtenemos el elemento HTML donde se van a renderizar las cards
 const cards = document.getElementById("cards");
 
-// Cargamos productos desde localStorage
-let products = JSON.parse(localStorage.getItem("productos"))
+// Carga inicial cuando se termina de cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarCards(myProducts); // Llamamos a la función de renderizado con los productos importados
+});
 
-// Función para mezclar array
+// Función para mezclar aleatoriamente los elementos de un array
+// Utiliza el algoritmo de Fisher-Yates (mezcla justa)
+// @param {Array} array - Array a mezclar
+// @returns {Array} - Array mezclado
 function mezclarArray(array) {
-    // Recorremos el array desde el último elemento hacia el primero
     for (let i = array.length - 1; i > 0; i--) {
-        // Generamos un índice aleatorio j entre 0 e i (inclusive)
-        const j = Math.floor(Math.random() * (i + 1));
-        // Intercambiamos el elemento actual (i) con el elemento aleatorio (j)
-        [array[i], array[j]] = [array[j], array[i]];
-        // array[i]: elemento actual en la posición i "indice a intercambiar" 
-        // array[j]: elemento elegido al azar para intercambiar "por este elemento"
-        // Esta técnica asegura que cada elemento tenga la misma probabilidad de aparecer en cualquier posición
+        const j = Math.floor(Math.random() * (i + 1)); // índice aleatorio entre 0 e i
+        [array[i], array[j]] = [array[j], array[i]];   // intercambiamos los elementos
     }
-    // Devolvemos el array ya mezclado
     return array;
 }
 
-// Función para renderizar las cards con stock actualizado
+// Función para renderizar las cards de productos con su stock y talles disponibles
+// @param {Array} products - Array de productos a mostrar
 function renderizarCards(products) {
-    // Incrementamos cards de bootstrap a nuestro documento
+    // Limpiamos el contenedor antes de insertar nuevas cards
     cards.innerHTML = "";
 
-    // Creamos una copia del array original myProducts usando el operador spread [...]
-    // Esto es para no modificar el array original, sino trabajar sobre una copia
+    // Clonamos el array original para no modificar el import directamente
     const productosAleatorios = mezclarArray([...products]);
 
     productosAleatorios.forEach(product => {
-        // Función para generar los botones de talles disponibles
+        // Generamos los botones solo de los talles que tienen stock
         const tallesDisponibles = Object.entries(product.talles)
             .filter(([talle, cantidad]) => cantidad > 0)
-            // .filter: filtra los pares de talles y cantidad
-            // talles: el nombre del talle "CLAVE"
-            // cantidad: la cantidad disponible "VALOR"
             .map(([talle]) =>
-                // map: mapea cada pareja de talles y cantidad a un botón
                 `
                     <button type="button" class="btn btn-outline-secondary btn-talle" style="width: 50px; font-size: 0.7rem;"
                         onclick="agregarAlCarrito(${product.id}, '${talle}')">
@@ -48,7 +44,7 @@ function renderizarCards(products) {
                 `
             ).join("");
 
-        // Creamos el HTML para los productos
+        // Creamos la estructura HTML de cada card
         cards.innerHTML += `
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="card producto-card text-center shadow-lg">
@@ -75,9 +71,3 @@ function renderizarCards(products) {
         `;
     });
 }
-
-// Carga inicial
-document.addEventListener('DOMContentLoaded', () => {
-    products = JSON.parse(localStorage.getItem("productos"));
-    renderizarCards(products);
-});
