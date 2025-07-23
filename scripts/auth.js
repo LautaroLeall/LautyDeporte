@@ -1,0 +1,1 @@
+// AUTH.JS - Verificar si el usuario esta autenticado

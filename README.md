@@ -42,13 +42,7 @@
    │   ├── modalCarrito.js
    │   ├── navbar.js
    │   └── register.js
-   ├── styles/
-   │   ├── card.css
-   │   ├── carousel.css
-   │   ├── filter.css
-   │   ├── footer.css
-   │   ├── formulario.css
-   │   └── navbar.css
+   ├── styles/             # Estilos
    └── index.html
 ```
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio Sesion</title>
+    <title>Inicio Sesión</title>
     <!-- ICONO -->
     <link rel="shortcut icon" href="/assets/logo-head.png" type="image/x-icon">
     <!-- CSS -->
@@ -26,20 +26,21 @@
     <main class="flex-fill">
         <div class="formulario container-fluid">
             <div class="row justify-content-center">
+                <!-- Formulario de login -->
                 <form class="col-4 border border-dark rounded p-3 bg-light" onsubmit="handleSubmit(event)">
+
                     <div class="mb-3">
-                        <label for="email" class="form-label">Gmail</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                            placeholder="Ingrese su email" maxlength="30" minlength="6" required
-                            onchange="handleChange(event)">
+                        <label for="loginInput" class="form-label">Email o Usuario</label>
+                        <input type="text" class="form-control" id="loginInput"
+                            placeholder="Ingrese su email o nombre de usuario" maxlength="30" minlength="5" required>
                         <small class="error"></small>
                     </div>
+
                     <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
+                        <label for="password" class="form-label">Contraseña</label>
                         <div class="input-group">
                             <input type="password" class="form-control" id="password"
-                                placeholder="Ingresa tu contraseña" maxlength="25" minlength="8" required
-                                onchange="handleChange(event)">
+                                placeholder="Ingresa tu contraseña" maxlength="25" minlength="8" required>
                             <button type="button"
                                 class="btn btn-outline-dark btn-sm position-absolute end-0 top-50 translate-middle-y me-2"
                                 style="z-index: 2;" onclick="togglePassword('password', this)">
@@ -48,13 +49,21 @@
                         </div>
                         <small class="error"></small>
                     </div>
-                    <div class="justify-content-center d-flex">
-                        <button type="submit" id="submit" class="btn btn-outline-dark" disabled>Iniciar Sesion</button>
+
+                    <div class="d-flex justify-content-end align-items-center">
+                        <button type="submit" id="submit" class="btn btn-outline-dark">Iniciar Sesión</button>
+                        <div class="ms-5">
+                            <a class="register-link text-secondary" href="./register.html">
+                                ¿No tienes cuenta? Regístrate
+                            </a>
+                        </div>
                     </div>
+
                 </form>
             </div>
         </div>
         <script src="/scripts/login.js"></script>
+
         <div id="modal">
             <script src="/scripts/modalCarrito.js"></script>
         </div>
