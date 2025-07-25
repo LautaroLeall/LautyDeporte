@@ -61,6 +61,11 @@ navBar.innerHTML += `
                     </div>
                     <div class="d-flex gap-2">
                         <li class="nav-item">
+                            <a class="nav-link active text-secondary fw-bold" id="searchLink" href="#">
+                                <i class="bi bi-search"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active text-success fw-bold" id="loginLink" href="${urlLogin}">
                                 <i class="bi bi-person-check"></i>
                             </a>
@@ -78,11 +83,6 @@ navBar.innerHTML += `
                         <li class="nav-item">
                             <a class="nav-link active text-secondary fw-bold" id="profileLink" onclick="abrirModal()">
                                 <i class="bi bi-cart4"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-secondary fw-bold" id="searchLink" href="#">
-                                <i class="bi bi-search"></i>
                             </a>
                         </li>
                     </div>
