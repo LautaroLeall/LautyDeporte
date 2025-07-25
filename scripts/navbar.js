@@ -1,4 +1,4 @@
-// NAVBAR
+// NAVBAR 
 
 // Accedemos al elemento que contiene el contenido de la navBar
 const navBar = document.getElementById("navContainer");
@@ -42,49 +42,46 @@ navBar.innerHTML += `
                 <ul class="navbar-nav my-lg-0 navbar-nav-scroll w-100 justify-content-around align-items-center">
                     <div class="d-flex">
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold" id="homeLink" aria-current="page" href="${urlHome}">LautyDeporte</a>
+                            <a class="nav-link active fw-bold" id="homeLink" href="${urlHome}">LautyDeporte</a>
                         </li>
                     </div>
-                    <div class="d-flex gap-5">
+                    <div class="d-flex gap-5 align-items-center" id="navLinksContainer">
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="indumentariaLink" aria-current="page" href="${urlIndumentaria}">
-                                Indumentaria
-                            </a>
+                            <a class="nav-link active fw-medium" id="indumentariaLink" href="${urlIndumentaria}">Indumentaria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="zapatillasLink" aria-current="page" href="${urlZapatillas}">
-                                Zapatillas
-                            </a>
+                            <a class="nav-link active fw-medium" id="zapatillasLink" href="${urlZapatillas}">Zapatillas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active fw-medium" id="accesoriosLink" aria-current="page" href="${urlAccessorios}">
-                                Accesorios
-                            </a>
+                            <a class="nav-link active fw-medium" id="accesoriosLink" href="${urlAccessorios}">Accesorios</a>
                         </li>
+                    </div>
+                    <div id="searchInputContainer" class="d-none w-50 slide-in-up">
+                        <input id="searchInput" class="form-control form-control-sm" type="search" placeholder="Buscar productos...">
                     </div>
                     <div class="d-flex gap-2">
                         <li class="nav-item">
-                            <a class="nav-link active text-success fw-bold" id="loginLink" aria-current="page" href="${urlLogin}">
+                            <a class="nav-link active text-success fw-bold" id="loginLink" href="${urlLogin}">
                                 <i class="bi bi-person-check"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-success fw-bold" id="registerLink" aria-current="page" href="${urlRegister}">
+                            <a class="nav-link active text-success fw-bold" id="registerLink" href="${urlRegister}">
                                 <i class="bi bi-person-add"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-danger fw-bold" id="logoutLink" aria-current="page" href="#" onclick="logOut()">
+                            <a class="nav-link active text-danger fw-bold" id="logoutLink" href="#" onclick="logOut()">
                                 <i class="bi bi-person-dash"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-secondary fw-bold" id="profileLink" aria-current="page" onclick="abrirModal()">
+                            <a class="nav-link active text-secondary fw-bold" id="profileLink" onclick="abrirModal()">
                                 <i class="bi bi-cart4"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-secondary fw-bold" id="searchLink" aria-current="page" href="#">
+                            <a class="nav-link active text-secondary fw-bold" id="searchLink" href="#">
                                 <i class="bi bi-search"></i>
                             </a>
                         </li>
@@ -98,13 +95,12 @@ navBar.innerHTML += `
 const loginLink = document.getElementById("loginLink");
 const registerLink = document.getElementById("registerLink");
 const logoutLink = document.getElementById("logoutLink");
-
-// Funcion para Cerrar Sesion
-const logOut = () => {
-    // Eliminamos el AUTH USER del localStorage
-    localStorage.removeItem('authUser');
-    window.location.href = "/pages/login.html";
-}
+const searchLink = document.getElementById("searchLink");
+const searchIcon = searchLink.querySelector("i");
+const navLinksContainer = document.getElementById("navLinksContainer");
+const searchInputContainer = document.getElementById("searchInputContainer");
+const searchInput = document.getElementById("searchInput");
+let isSearchActive = false;
 
 // Condicional para mostrar los botones según el estado de autenticación
 if (authUser) {
@@ -119,17 +115,19 @@ if (authUser) {
     logoutLink.style.display = "none";
 }
 
+// Funcion para Cerrar Sesion
+function logOut() {
+    // Eliminamos el AUTH USER del localStorage
+    localStorage.removeItem('authUser');
+    window.location.href = "/pages/login.html";
+}
+
 // Funcion para abrir el modal de carrito
 function abrirModal() {
     const modal = new bootstrap.Modal(document.getElementById("carritoModal"));
     actualizarModal();
     modal.show();
 }
-
-// Aplicar estilos según la sección activa
-resaltarLink("zapatillasLink", "http://127.0.0.1:5500/pages/zapatilla.html");
-resaltarLink("indumentariaLink", "http://127.0.0.1:5500/pages/indumentaria.html");
-resaltarLink("accesoriosLink", "http://127.0.0.1:5500/pages/accesorios.html");
 
 // Función para aplicar estilos al link activo
 function resaltarLink(id, urlMatch) {
@@ -139,3 +137,52 @@ function resaltarLink(id, urlMatch) {
         link.style.borderBottom = "2px solid rgb(88, 76, 53)";
     }
 }
+
+// Aplicar estilos según la sección activa
+resaltarLink("zapatillasLink", "http://127.0.0.1:5500/pages/zapatilla.html");
+resaltarLink("indumentariaLink", "http://127.0.0.1:5500/pages/indumentaria.html");
+resaltarLink("accesoriosLink", "http://127.0.0.1:5500/pages/accesorios.html");
+
+// ANIMACIONES AL APRETAR BUSCADOR (SLIDE UP / DOWN)
+searchLink.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (!isSearchActive) {
+        // Deslizar los links hacia arriba
+        navLinksContainer.classList.add("slide-out-up");
+
+        setTimeout(() => {
+            navLinksContainer.classList.add("d-none");
+            navLinksContainer.classList.remove("slide-out-up");
+
+            // Mostrar input deslizándose hacia arriba
+            searchInputContainer.classList.remove("d-none");
+            searchInputContainer.classList.add("slide-in-up");
+
+            searchIcon.classList.replace("bi-search", "bi-x-lg");
+            isSearchActive = true;
+        }, 400);
+    } else {
+        // Deslizar el input hacia abajo
+        searchInputContainer.classList.remove("slide-in-up");
+        searchInputContainer.classList.add("slide-out-down");
+
+        setTimeout(() => {
+            searchInputContainer.classList.add("d-none");
+            searchInputContainer.classList.remove("slide-out-down");
+
+            // Mostrar los links deslizándose hacia abajo
+            navLinksContainer.classList.remove("d-none");
+            navLinksContainer.classList.add("slide-in-down");
+
+            searchIcon.classList.replace("bi-x-lg", "bi-search");
+            searchInput.value = "";
+
+            setTimeout(() => {
+                navLinksContainer.classList.remove("slide-in-down");
+            }, 400);
+
+            isSearchActive = false;
+        }, 400);
+    }
+});
