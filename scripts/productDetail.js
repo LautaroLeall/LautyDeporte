@@ -33,9 +33,9 @@ if (!producto) {
                     <img id="img-principal" src="${producto.imgFront}" class="img-fluid rounded shadow zoomed-img" alt="${producto.nombre}">
                 </div>
                 <div class="col-md-7">
-                    <h2 class="fw-bold">${producto.nombre}</h2>
-                    <p class="text-success fw-bold fs-3">$${producto.precio}</p>
-                    <p class="text-muted fs-5">${producto.descripcion || 'Sin descripción disponible.'}</p>
+                    <h3 class="fw-bold">${producto.nombre}</h3>
+                    <p class="text-success fw-bold fs-5">$${producto.precio}</p>
+                    <p class="text-muted">${producto.descripcion || 'Sin descripción disponible.'}</p>
                     <div class="mt-4">
                         <label class="form-label fw-bold">Disponibilidad:</label>
                         <div id="tallesContainer" class="mb-3">

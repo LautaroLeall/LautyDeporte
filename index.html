@@ -23,10 +23,10 @@
 <body>
     <header>
         <div id="navContainer">
-            <script src="/scripts/navbar.js"></script>
+            <script src="/scripts/navbar.js" type="module"></script>
         </div>
         <div id="carousel">
-            <script src="/scripts/carousel.js"></script>
+            <script src="/scripts/carousel.js" type="module"></script>
         </div>
     </header>
 
@@ -37,14 +37,16 @@
                 <script src="/scripts/search.js" type="module"></script>
             </div>
         </div>
+        
         <div id="modal">
-            <script src="/scripts/modal.js"></script>
-            <script src="/scripts/carrito.js"></script>
+            <script src="/scripts/carrito/modal.js" type="module"></script>
+            <script src="/scripts/carrito/carrito.js" type="module"></script>
+            <script src="/scripts/carrito/carritoHelpers.js" type="module"></script>
         </div>
     </main>
 
     <footer id="footer">
-        <script src="/scripts/footer.js"></script>
+        <script src="/scripts/footer.js" type="module"></script>
     </footer>
 
     <!-- JS BOOTSTRAP -->
