@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         zapatillas: `${basePath}pages/zapatilla.html`,
         indumentaria: `${basePath}pages/indumentaria.html`,
         accesorios: `${basePath}pages/accesorios.html`,
+        profile: `${basePath}pages/profile.html`,
     };
 
     const authUser = JSON.parse(localStorage.getItem("authUser"));
@@ -67,6 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </a>
                             </li>
                             <li>
+                                <a class="nav-link text-success fw-bold" id="profileLink" href="${routes.profile}">
+                                    <i class="bi bi-person-bounding-box"></i>
+                                </a>
+                            </li>
+                            <li>
                                 <a class="nav-link text-secondary fw-bold" id="cartLink" href="#">
                                     <i class="bi bi-cart4"></i>
                                 </a>
@@ -82,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("loginLink").style.display = authUser ? "none" : "flex";
     document.getElementById("registerLink").style.display = authUser ? "none" : "flex";
     document.getElementById("logoutLink").style.display = authUser ? "flex" : "none";
+    document.getElementById("profileLink").style.display = authUser ? "flex" : "none";
 
     // Evento para logout
     document.getElementById("logoutLink").addEventListener("click", () => {

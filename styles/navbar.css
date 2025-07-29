@@ -43,6 +43,7 @@
 }
 
 /* ICON LINKS */
+#cartLink,
 #searchLink,
 #profileLink,
 #loginLink,
@@ -52,6 +53,7 @@
     font-size: 1.4rem;
 }
 
+#cartLink:hover,
 #searchLink:hover,
 #profileLink:hover,
 #loginLink:hover,
