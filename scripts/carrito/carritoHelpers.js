@@ -1,5 +1,9 @@
-// FUNCIONES AUXILIARES DEL CARRITO
+// carritoHelpers.js
 
+import { getAuthUser } from "../profile/profileHelpers.js";
+import { getCompraKey } from "../profile/profileHelpers.js";
+
+//  Actualiza el contenido visual del modal del carrito.
 export function actualizarModal(carrito) {
     const lista = document.getElementById("lista-carrito");
     const total = document.getElementById("total-carrito");
@@ -21,23 +25,23 @@ export function actualizarModal(carrito) {
     }
 
     let totalAmount = 0;
+
     carrito.forEach((item, index) => {
         totalAmount += item.precio;
-        lista.innerHTML += 
-            `
-                <li class="list-group-item d-flex justify-content-between align-items-center text-light bg-secondary bg-opacity-25 border-0 rounded-3 mb-2">
-                    <div>
+        lista.innerHTML += `
+            <li class="list-group-item d-flex justify-content-between align-items-center text-light bg-secondary bg-opacity-25 border-0 rounded-3 mb-2">
+                <div>
                     <strong>${item.nombre}</strong><br>
-                    <small class="text-warning">Disponible: ${item.talle}</small>
-                    </div>
-                    <div class="d-flex align-items-center gap-3">
+                    <small class="text-warning">Talle: ${item.talle}</small>
+                </div>
+                <div class="d-flex align-items-center gap-3">
                     <span class="text-warning fw-bold">$${item.precio}</span>
                     <button class="btn btn-sm btn-outline-danger" onclick="confirmarEliminar(${index})">
                         <i class="bi bi-trash"></i>
                     </button>
-                    </div>
-                </li>
-            `;
+                </div>
+            </li>
+        `;
     });
 
     total.textContent = totalAmount.toFixed(2);
@@ -46,6 +50,7 @@ export function actualizarModal(carrito) {
     vaciarBtn.disabled = false;
 }
 
+// Confirma y elimina un producto del carrito.
 export function confirmarEliminar(index, carrito, actualizarModal) {
     Swal.fire({
         title: '¿Eliminar producto?',
@@ -70,10 +75,11 @@ export function confirmarEliminar(index, carrito, actualizarModal) {
     });
 }
 
+//  Vacía el carrito completo.
 export function vaciarCarrito(carrito, actualizarModal) {
     Swal.fire({
         title: '¿Vaciar carrito?',
-        text: 'Se eliminarán todos los productos',
+        text: 'Se eliminarán todos los productos del carrito.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Sí, vaciar',
@@ -93,9 +99,25 @@ export function vaciarCarrito(carrito, actualizarModal) {
     });
 }
 
+//  Finaliza la compra, actualiza stock, guarda historial y vacía el carrito.
 export function finalizarCompra(carrito, products, actualizarModal) {
+    const authUser = getAuthUser();
+
+    if (!authUser) {
+        return Swal.fire({
+            icon: 'info',
+            title: 'Debes iniciar sesión',
+            text: 'Inicia sesión para finalizar la compra.',
+            confirmButtonText: 'Entendido'
+        });
+    }
+
     if (carrito.length === 0) {
-        return Swal.fire({ icon: 'info', title: 'Carrito vacío', text: 'No hay productos para comprar.' });
+        return Swal.fire({
+            icon: 'info',
+            title: 'Carrito vacío',
+            text: 'No hay productos para comprar.'
+        });
     }
 
     let sinStock = false;
@@ -111,13 +133,30 @@ export function finalizarCompra(carrito, products, actualizarModal) {
     });
 
     if (sinStock) {
-        return Swal.fire({ icon: 'error', title: 'Error de stock', text: 'Uno o más productos ya no tienen stock.' });
+        return Swal.fire({
+            icon: 'error',
+            title: 'Error de stock',
+            text: 'Uno o más productos ya no tienen stock.'
+        });
     }
 
+    // Guardar stock actualizado
     localStorage.setItem('productos', JSON.stringify(products));
+
+    // Guardar historial de compra con clave dinámica
+    const key = getCompraKey();
+    const comprasPrevias = JSON.parse(localStorage.getItem(key)) || [];
+    comprasPrevias.push({
+        fecha: new Date().toISOString(),
+        items: [...carrito]
+    });
+    localStorage.setItem(key, JSON.stringify(comprasPrevias));
+
+    // Vaciar carrito
     carrito.length = 0;
     actualizarModal(carrito);
 
+    // Mostrar confirmación
     Swal.fire({
         icon: 'success',
         title: '¡Compra realizada!',
