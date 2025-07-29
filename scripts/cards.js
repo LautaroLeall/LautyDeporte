@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Función para mezclar aleatoriamente los elementos de un array
 // Utiliza el algoritmo de Fisher-Yates (mezcla justa)
-// @param {Array} array - Array a mezclar
-// @returns {Array} - Array mezclado
 function mezclarArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1)); // índice aleatorio entre 0 e i
@@ -23,7 +21,6 @@ function mezclarArray(array) {
 }
 
 // Función para renderizar las cards de productos con su stock y talles disponibles
-// @param {Array} products - Array de productos a mostrar
 function renderizarCards(products) {
     // Limpiamos el contenedor antes de insertar nuevas cards
     cards.innerHTML = "";
