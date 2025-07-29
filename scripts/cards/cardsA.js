@@ -1,25 +1,29 @@
-// CARDS - ZAPATILLAS
+// CARDS - ACCESORIOS
 
 // Importamos el array de productos desde el archivo products.js
-import { myProducts } from '../api/products.js';
+import { myProducts } from "../../api/products.js";
 
 // Accedemos al elemento que contiene el contenido de las Card
 const cards = document.getElementById("cards");
 
-// Mezclador (shuffle)
-// Función para mezclar aleatoriamente los productos usando sort()
+// Función para mezclar aleatoriamente los elementos de un array
+// Utiliza el algoritmo de mezcla simple con `sort`
 function mezclarArray(productos) {
     return productos.sort(() => Math.random() - 0.5);
 }
 
-// Renderizador de Cards
-// Renderiza las tarjetas de producto en el DOM
+// Función para filtrar los productos según la categoría indicada
+function filtrarPorCategoria(productos, categoria) {
+    return productos.filter(product => product.categoria === categoria);
+}
+
+// Función para renderizar las cards de productos filtrados
 function renderizarCards(productos) {
-    // Limpiamos el contenedor antes de insertar nuevos productos
+    // Limpiamos el contenido anterior del contenedor
     cards.innerHTML = "";
 
     productos.forEach((product) => {
-        // Filtramos los talles disponibles (stock > 0) y los mapeamos a botones
+        // Generamos los botones de talles disponibles
         const tallesDisponibles = Object.entries(product.talles)
             .filter(([_, cantidad]) => cantidad > 0)
             .map(([talle]) => `
@@ -29,7 +33,7 @@ function renderizarCards(productos) {
                 </button>
             `).join("");
 
-        // Agregamos la card HTML al contenedor principal
+        // Creamos la estructura HTML de cada card
         cards.innerHTML += `
         <div class="col-md-3 d-flex justify-content-center">
             <div class="card producto-card text-center shadow-lg">
@@ -53,29 +57,27 @@ function renderizarCards(productos) {
                 </div>
             </div>
         </div>
-        `;
+    `;
     });
 }
 
-// Filtrador por categoría
-// Filtra productos según una categoría dada
-function filtrarPorCategoria(productos, categoria) {
-    return productos.filter(product => product.categoria === categoria);
-}
+// Exponemos funciones y datos globales para que el filtro los pueda usar
+window.renderizarCards = renderizarCards; // Permite que filter.js pueda invocar esta función
+window.mezclarArray = mezclarArray;       // Por si queremos volver a mezclar desde filter.js
 
-// Compartimos funciones y datos con el filtro global (filter.js)
-window.renderizarCards = renderizarCards;  // Permite que filter.js use esta función para renderizar
-window.mezclarArray = mezclarArray;        // Usado para mezclar al seleccionar "Por defecto"
-
-// Carga inicial cuando se completa el DOM
+// Carga inicial de los productos de ACCESORIOS
 document.addEventListener("DOMContentLoaded", () => {
-    const categoriaSeleccionada = "Zapatillas";
+    const categoriaSeleccionada = "Accesorios";
 
-    const productosFiltrados = filtrarPorCategoria(myProducts, categoriaSeleccionada);
-    const productosMezclados = mezclarArray(productosFiltrados);
+    // Filtramos por categoría
+    const filtrados = filtrarPorCategoria(myProducts, categoriaSeleccionada);
 
-    // Guardamos el array filtrado como global para que filter.js lo use
-    window.productosFiltrados = productosFiltrados;
+    // Guardamos en una variable global accesible desde filter.js
+    window.productosFiltrados = filtrados;
 
-    renderizarCards(productosMezclados);
+    // Mezclamos el orden inicial
+    const mezclados = mezclarArray(filtrados);
+
+    // Renderizamos las cards
+    renderizarCards(mezclados);
 });

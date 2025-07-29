@@ -1,7 +1,7 @@
-// CARDS - INDUMENTARIA
+// CARDS - ZAPATILLAS
 
 // Importamos el array de productos desde el archivo products.js
-import { myProducts } from '../api/products.js';
+import { myProducts } from "../../api/products.js";
 
 // Accedemos al elemento que contiene el contenido de las Card
 const cards = document.getElementById("cards");
@@ -63,18 +63,18 @@ function filtrarPorCategoria(productos, categoria) {
     return productos.filter(product => product.categoria === categoria);
 }
 
-// Compartimos funciones y datos con el filtro global
-window.renderizarCards = renderizarCards;  // Para que filter.js pueda renderizar desde acá
-window.mezclarArray = mezclarArray;        // Por si se elige "Por defecto" y se desea mezclar
+// Compartimos funciones y datos con el filtro global (filter.js)
+window.renderizarCards = renderizarCards;  // Permite que filter.js use esta función para renderizar
+window.mezclarArray = mezclarArray;        // Usado para mezclar al seleccionar "Por defecto"
 
 // Carga inicial cuando se completa el DOM
 document.addEventListener("DOMContentLoaded", () => {
-    const categoriaSeleccionada = "Indumentaria";
+    const categoriaSeleccionada = "Zapatillas";
 
     const productosFiltrados = filtrarPorCategoria(myProducts, categoriaSeleccionada);
     const productosMezclados = mezclarArray(productosFiltrados);
 
-    // Guardamos el array filtrado globalmente para que filter.js lo use
+    // Guardamos el array filtrado como global para que filter.js lo use
     window.productosFiltrados = productosFiltrados;
 
     renderizarCards(productosMezclados);
