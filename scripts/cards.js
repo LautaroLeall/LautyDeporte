@@ -61,7 +61,7 @@ function renderizarCards(products) {
                             </div>
                         </div>
                         <p class="text-success fw-bold">$${product.precio}</p>
-                        <button class="btn btn-outline-primary">Ver producto</button>
+                        <a href="/pages/product.html?id=${product.id}" class="btn btn-outline-primary">Ver producto</a>
                     </div>
                 </div>
             </div>
