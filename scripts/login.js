@@ -23,13 +23,28 @@ const handleSubmit = (event) => {
     );
 
     if (foundUser) {
-        alert(`¡Bienvenido/a ${foundUser.name}!`);
-        // Guardamos el usuario logueado como "authUser"
-        localStorage.setItem('authUser', JSON.stringify(foundUser));
-        // Redireccionamos a la página principal
-        window.location.href = "/index.html";
+        Swal.fire({
+            icon: 'success',
+            title: `¡Bienvenido/a, ${foundUser.name}!`,
+            text: 'Has iniciado sesión correctamente.',
+            timer: 2500,
+            showConfirmButton: false,
+            timerProgressBar: true,
+            willClose: () => {
+                // Guardamos el usuario logueado como "authUser"
+                localStorage.setItem('authUser', JSON.stringify(foundUser));
+                // Redireccionamos a la página principal
+                window.location.href = "/index.html";
+            }
+        });
     } else {
-        alert("El usuario no existe o los datos son incorrectos.\nPor favor, verifica tus credenciales o regístrate.");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: `El usuario no existe o los datos son incorrectos.<br>Por favor, verifica tus credenciales o regístrate.`,
+            confirmButtonText: 'Entendido',
+            footer: '<a href="register.html">¿No tienes cuenta? Regístrate aquí</a>'
+        });
     }
 };
 
