@@ -635,7 +635,7 @@ export const myProducts = [
         imgBack: "/assets/accesorios/guantes-9-atras.png"
     },
     {
-        id: 39,
+        id: 40,
         nombre: "Gorra Capslab One Piece",
         precio: 69999,
         stock: 0,
@@ -648,7 +648,7 @@ export const myProducts = [
         imgBack: "/assets/accesorios/visera-10-atras.png"
     },
     {
-        id: 40,
+        id: 41,
         nombre: "Medias Con Caña Vans",
         precio: 18900,
         stock: 5,
@@ -661,7 +661,7 @@ export const myProducts = [
         imgBack: "/assets/accesorios/media-11-atras.png"
     },
     {
-        id: 40,
+        id: 42,
         nombre: "Gorra New Era Chicago",
         precio: 63999,
         stock: 2,
@@ -674,7 +674,7 @@ export const myProducts = [
         imgBack: "/assets/accesorios/visera-12-atras.png"
     },
     {
-        id: 41,
+        id: 43,
         nombre: "Pelota De Basquet Reebok",
         precio: 22400,
         stock: 7,
@@ -687,7 +687,7 @@ export const myProducts = [
         imgBack: "/assets/accesorios/pelota-13-atras.png"
     },
     {
-        id: 42,
+        id: 44,
         nombre: "Mochila Adidas Classic",
         precio: 35999,
         stock: 12,
@@ -700,7 +700,7 @@ export const myProducts = [
         imgBack: "/assets/accesorios/mochila-14-atras.png"
     },
     {
-        id: 43,
+        id: 45,
         nombre: "Mochila Puma Phase",
         precio: 44999,
         stock: 0,
