@@ -116,15 +116,27 @@ const handleSubmit = (event) => {
     const users = JSON.parse(localStorage.getItem("Usuarios")) || [];
 
     if (isDuplicate(newUser, users)) {
-        alert("El email o el nombre de usuario ya están registrados.");
+        Swal.fire({
+            icon: 'warning',
+            title: 'Usuario existente',
+            text: 'El email o el nombre de usuario ya están registrados.',
+            confirmButtonText: 'Entendido',
+            footer: '<a href="login.html">¿Ya tienes cuenta? Inicia sesión aquí</a>'
+        });
         return;
     }
 
     users.push(newUser);
     localStorage.setItem("Usuarios", JSON.stringify(users));
 
-    alert("¡Registro exitoso!");
-    window.location.href = "./login.html";
+    Swal.fire({
+        icon: 'success',
+        title: '¡Registro exitoso!',
+        text: 'Ahora puedes iniciar sesión con tus credenciales.',
+        confirmButtonText: 'Ingresar',
+    }).then(() => {
+        window.location.href = "./login.html";
+    });
 };
 
 // Mostrar/Ocultar contraseña
