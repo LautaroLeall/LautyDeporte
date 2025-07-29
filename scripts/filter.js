@@ -18,23 +18,25 @@ filter.innerHTML = `
     </div>
 `;
 
-// Obtenemos el select ya insertado
+// Obtenemos el <select> ya insertado
 const selectOrden = document.getElementById("ordenarProductos");
 
-// Leemos los datos compartidos desde cardsA.js (window.productosFiltrados)
-// Usamos también window.renderizarCards para actualizar visualmente
-
-// Evento de cambio para aplicar el ordenamiento
+// Escuchamos el evento de cambio en el filtro
 selectOrden.addEventListener("change", (event) => {
     const criterio = event.target.value;
 
-    // Verificamos que los datos estén disponibles
-    if (!window.productosFiltrados || !window.renderizarCards) return;
+    // Verificamos que tengamos la función para renderizar
+    if (!window.renderizarCards) return;
 
-    // Clonamos el array original filtrado
-    let productosOrdenados = [...window.productosFiltrados];
+    // Usamos el array visible (sea búsqueda o no)
+    const base = window.productosVisibles || window.productosFiltrados;
 
-    // Ordenamos según el criterio seleccionado
+    if (!base) return; // Por seguridad, si no hay nada cargado
+
+    // Clonamos el array para no mutar el original
+    let productosOrdenados = [...base];
+
+    // Aplicamos el criterio de ordenamiento
     switch (criterio) {
         case "nombre-asc":
             productosOrdenados.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -46,10 +48,10 @@ selectOrden.addEventListener("change", (event) => {
             productosOrdenados.sort((a, b) => b.precio - a.precio);
             break;
         default:
-            // Mezclamos nuevamente si se elige "Por defecto"
+            // Orden por defecto: mezcla aleatoria del array original de la categoría
             productosOrdenados = window.mezclarArray([...window.productosFiltrados]);
     }
 
-    // Renderizamos nuevamente las cards con el nuevo orden
+    // Renderizamos el nuevo resultado ordenado
     window.renderizarCards(productosOrdenados);
 });
