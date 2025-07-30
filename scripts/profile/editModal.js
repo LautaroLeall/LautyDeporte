@@ -1,39 +1,39 @@
-// Editar perfil
+// Editar perfil con campos opcionales y validaciones
 import { getAuthUser, updateUser, regex } from "./profileHelpers.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Inyectamos el HTML del modal al final del body
+    // Inyectar HTML del modal al final del body
     document.body.insertAdjacentHTML("beforeend", `
         <div class="modal fade" id="editarPerfilModal" tabindex="-1" aria-labelledby="editarPerfilModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border border-secondary shadow-lg rounded-4 bg-dark text-light">
-            <div class="modal-header border-bottom border-secondary">
-                <h5 class="modal-title text-success" id="editarPerfilModalLabel">Editar Perfil</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editarPerfilForm" class="d-flex flex-column gap-3">
-                <div>
-                    <label for="nuevoNombre" class="form-label text-light">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="nuevoNombre" placeholder="Ej: LautyGod" required>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border border-secondary shadow-lg rounded-4 bg-dark text-light">
+                    <div class="modal-header border-bottom border-secondary">
+                        <h5 class="modal-title text-success" id="editarPerfilModalLabel">Editar Perfil</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editarPerfilForm" class="d-flex flex-column gap-3">
+                            <div>
+                                <label for="nuevoNombre" class="form-label text-light">Nombre de Usuario</label>
+                                <input type="text" class="form-control" id="nuevoNombre" placeholder="Ej: LautyGod">
+                            </div>
+                            <div>
+                                <label for="nuevoEmail" class="form-label text-light">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="nuevoEmail" placeholder="Ej: ejemplo@mail.com">
+                            </div>
+                            <div>
+                                <label for="nuevaPassword" class="form-label text-light">Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="nuevaPassword" placeholder="Mínimo 8 caracteres">
+                            </div>
+                            <button type="submit" class="btn btn-success fw-bold mt-2">Guardar Cambios</button>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <label for="nuevoEmail" class="form-label text-light">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="nuevoEmail" placeholder="Ej: ejemplo@mail.com" required>
-                </div>
-                <div>
-                    <label for="nuevaPassword" class="form-label text-light">Nueva Contraseña</label>
-                    <input type="password" class="form-control" id="nuevaPassword" placeholder="Mínimo 8 caracteres" required>
-                </div>
-                <button type="submit" class="btn btn-success fw-bold mt-2">Guardar Cambios</button>
-                </form>
             </div>
-            </div>
-        </div>
         </div>
     `);
 
-    // Referencias a elementos
+    // Referencias a elementos del DOM
     const btnEditar = document.getElementById("btnEditarPerfil");
     const form = document.getElementById("editarPerfilForm");
     const inputName = document.getElementById("nuevoNombre");
@@ -42,57 +42,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalEl = document.getElementById("editarPerfilModal");
     const bsModal = new bootstrap.Modal(modalEl);
 
-    // Abrir modal y precargar datos
+    // Abrir modal y precargar datos del usuario
     btnEditar.addEventListener("click", () => {
         const user = getAuthUser();
         if (!user) return;
 
         inputName.value = user.userName || "";
         inputEmail.value = user.email || "";
-        inputPass.value = "";
+        inputPass.value = ""; // no se muestra la contraseña actual
 
         bsModal.show();
     });
 
-    // Manejar envío del formulario con validaciones
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+    // Validar campos editables y permitir modificar uno o más opcionalmente
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
 
-        const nombre = inputName.value.trim();
-        const email = inputEmail.value.trim();
-        const pass = inputPass.value.trim();
+        const nuevoNombre = inputName.value.trim();
+        const nuevoEmail = inputEmail.value.trim();
+        const nuevaPassword = inputPass.value.trim();
+
         const user = getAuthUser();
+        let cambios = false;
+        const actualizados = { ...user };
 
-        // Validaciones
-        if (!regex.userName.test(nombre)) {
-            return Swal.fire("⚠️ Nombre inválido",
-                "El nombre debe tener 5–20 caracteres (letras, números, _ o -).",
-                "warning"
-            );
-        }
-        if (!regex.email.test(email)) {
-            return Swal.fire("⚠️ Email inválido",
-                "Ingresa un correo válido, p.ej. ejemplo@dominio.com",
-                "warning"
-            );
-        }
-        if (!regex.password.test(pass)) {
-            return Swal.fire("⚠️ Contraseña inválida",
-                "Debe tener 8–25 caracteres, mayúscula, minúscula, número y símbolo.",
-                "warning"
-            );
+        if (nuevoNombre && nuevoNombre !== user.userName) {
+            if (!regex.userName.test(nuevoNombre)) {
+                return Swal.fire("Nombre inválido", "Debe tener 5–20 caracteres válidos.", "warning");
+            }
+            actualizados.userName = nuevoNombre;
+            cambios = true;
         }
 
-        // Actualizar usuario en localStorage
-        const updated = {
-            ...user,
-            userName: nombre,
-            email: email,
-            password: pass
-        };
-        updateUser(updated);
+        if (nuevoEmail && nuevoEmail !== user.email) {
+            if (!regex.email.test(nuevoEmail)) {
+                return Swal.fire("Email inválido", "Correo electrónico no válido.", "warning");
+            }
+            actualizados.email = nuevoEmail;
+            cambios = true;
+        }
 
-        // Feedback y cierre
+        if (nuevaPassword) {
+            if (!regex.password.test(nuevaPassword)) {
+                return Swal.fire("⚠️ Contraseña inválida", "Debe tener 8–25 caracteres con mayúscula, minúscula, número y símbolo.", "warning");
+            }
+            actualizados.password = nuevaPassword;
+            cambios = true;
+        }
+
+        if (!cambios) {
+            return Swal.fire("Sin cambios", "No modificaste ningún campo.", "info");
+        }
+
+        // Guardar en localStorage
+        updateUser(actualizados);
+
         Swal.fire({
             icon: "success",
             title: "Perfil actualizado",
@@ -100,10 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
             showConfirmButton: false,
             timerProgressBar: true
         });
+
         bsModal.hide();
 
-        // Refrescar datos en pantalla
-        document.getElementById("nombreUsuario").textContent = nombre;
-        document.getElementById("emailUsuario").textContent = email;
+        // Actualizar datos en la UI
+        document.getElementById("nombreUsuario").textContent = actualizados.userName;
+        document.getElementById("emailUsuario").textContent = actualizados.email;
     });
 });
