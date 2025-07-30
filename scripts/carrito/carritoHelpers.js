@@ -25,11 +25,11 @@ export function cargarCarrito() {
 
 // Actualiza el contenido visual del modal del carrito.
 export function actualizarModal(carrito) {
+    const count = document.getElementById("carrito-count");
     const lista = document.getElementById("lista-carrito");
     const total = document.getElementById("total-carrito");
-    const count = document.getElementById("carrito-count");
-    const finalizarBtn = document.getElementById("finalizar-compra-btn");
     const vaciarBtn = document.getElementById("vaciar-carrito-btn");
+    const finalizarBtn = document.getElementById("finalizar-compra-btn");
 
     if (!lista) return;
 
@@ -89,9 +89,11 @@ export function confirmarEliminar(index, carrito, actualizarModal) {
             Swal.fire({
                 icon: 'success',
                 title: 'Producto eliminado',
-                timer: 1200,
+                timer: 1000,
+                toast: true,
                 showConfirmButton: false,
                 timerProgressBar: true,
+                position: 'top-end'
             });
         }
     });
@@ -115,7 +117,9 @@ export function vaciarCarrito(carrito, actualizarModal) {
                 icon: 'success',
                 title: 'Carrito vaciado',
                 timer: 1000,
+                toast: true,
                 showConfirmButton: false,
+                position: 'top-end'
             });
         }
     });
