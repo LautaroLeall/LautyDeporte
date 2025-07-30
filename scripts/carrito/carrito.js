@@ -10,6 +10,8 @@ import {
   guardarCarrito
 } from './carritoHelpers.js';
 
+import { getAuthUser } from '../profile/profileHelpers.js';
+
 // Inicializamos el carrito desde localStorage si hay usuario logueado
 let carrito = cargarCarrito();
 
@@ -30,7 +32,7 @@ window.agregarAlCarrito = (id, talle) => {
       title: 'Producto agregado',
       text: `${producto.nombre} (Talle ${talle}) fue agregado al carrito.`,
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1000,
       toast: true,
       position: 'top-end'
     });
@@ -55,6 +57,7 @@ window.confirmarEliminar = (index) => {
 // DOM Ready: asociar eventos a botones del modal
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
+    // Botón "Vaciar carrito"
     document.getElementById("vaciar-carrito-btn")?.addEventListener("click", () => {
       vaciarCarrito(carrito, (carritoActualizado) => {
         carrito = carritoActualizado;
@@ -63,14 +66,47 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    // Botón "Finalizar compra" → valida login Y carrito, luego muestra modal pago
     document.getElementById("finalizar-compra-btn")?.addEventListener("click", () => {
-      finalizarCompra(carrito, products, (carritoFinal) => {
-        carrito = carritoFinal;
-        guardarCarrito(carrito);
-        actualizarModal(carrito);
-      });
+      const user = getAuthUser();
+
+      // Si NO está autenticado → mostrar alerta
+      if (!user) {
+        return Swal.fire({
+          icon: 'info',
+          title: 'Debes iniciar sesión',
+          text: 'Inicia sesión para finalizar la compra.',
+          confirmButtonText: 'Entendido'
+        });
+      }
+
+      // Si carrito está vacío
+      if (!carrito || carrito.length === 0) {
+        return Swal.fire({
+          icon: 'info',
+          title: 'Carrito vacío',
+          text: 'Agrega productos antes de continuar.'
+        });
+      }
+
+      // Esperar que el modal esté en el DOM
+      const pagoModalElement = document.getElementById("pagoModal");
+
+      if (!pagoModalElement) {
+        return Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'El modal de pago no se cargó correctamente. Intenta recargar la página.'
+        });
+      }
+
+      // Mostrar el modal si todo está OK
+      const pagoModal = new bootstrap.Modal(pagoModalElement);
+      pagoModal.show();
+      guardarCarrito(carrito);
     });
 
-    actualizarModal(carrito); // Refrescar visual al cargar
+    // Actualizar el modal visual del carrito al cargar
+    actualizarModal(carrito);
   }, 100); // Esperamos que el modal se inyecte antes de asignar eventos
 });
