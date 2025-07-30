@@ -28,10 +28,11 @@ window.agregarAlCarrito = (id, talle) => {
     Swal.fire({
       icon: 'success',
       title: 'Producto agregado',
-      text: `${producto.nombre} (Talle ${talle}) se agregó al carrito.`,
-      timer: 1200,
+      text: `${producto.nombre} (Talle ${talle}) fue agregado al carrito.`,
       showConfirmButton: false,
-      timerProgressBar: true
+      timer: 1500,
+      toast: true,
+      position: 'top-end'
     });
   } else {
     Swal.fire({
