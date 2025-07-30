@@ -1,4 +1,4 @@
-// formTarjeta.js
+// scripts/pay/formTarjeta.js
 
 export function generarFormularioTarjeta(formContainer, tipo, procesarPago) {
     const label = tipo === "credito" ? "Crédito" : "Débito";

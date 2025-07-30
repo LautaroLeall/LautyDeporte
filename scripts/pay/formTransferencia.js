@@ -1,4 +1,4 @@
-// formTransferencia.js
+// scripts/pay/formTransferencia.js
 
 export function generarFormularioTransferencia(formContainer, procesarPago) {
     formContainer.innerHTML = `

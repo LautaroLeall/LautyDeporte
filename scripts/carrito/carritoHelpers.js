@@ -1,11 +1,11 @@
-// carritoHelpers.js
+// scripts/carrito/carritoHelpers.js
 
 import { getAuthUser } from "../profile/profileHelpers.js";
 import { getCompraKey } from "../profile/profileHelpers.js";
 
 // Devuelve la clave correcta para guardar el carrito:
-    // - Si hay usuario logueado → carrito_nombreUsuario
-    // - Si NO → carrito_guest
+// - Si hay usuario logueado → carrito_nombreUsuario
+// - Si NO → carrito_guest
 function getCarritoKey() {
     const user = getAuthUser();
     return user ? `carrito_${user.userName}` : "carrito_guest";
@@ -126,7 +126,8 @@ export function vaciarCarrito(carrito, actualizarModal) {
 }
 
 // Finaliza la compra: verifica sesión, stock, guarda historial y limpia carrito.
-export function finalizarCompra(carrito, products, actualizarModal) {
+// Ahora recibe también método de pago para guardar en el historial.
+export function finalizarCompra(carrito, products, metodoPago = null, datosPago = null, actualizarModal) {
     const authUser = getAuthUser();
 
     if (!authUser) {
@@ -169,12 +170,14 @@ export function finalizarCompra(carrito, products, actualizarModal) {
     // Guardar stock actualizado
     localStorage.setItem('productos', JSON.stringify(products));
 
-    // Guardar historial de compra con clave dinámica
+    // Guardar historial de compra con clave dinámica, agregando método de pago
     const key = getCompraKey();
     const comprasPrevias = JSON.parse(localStorage.getItem(key)) || [];
     comprasPrevias.push({
         fecha: new Date().toISOString(),
-        items: [...carrito]
+        items: [...carrito],
+        metodoPago: metodoPago || "No especificado",
+        datosPago: datosPago || {}
     });
     localStorage.setItem(key, JSON.stringify(comprasPrevias));
 
@@ -194,4 +197,9 @@ export function finalizarCompra(carrito, products, actualizarModal) {
         const modal = bootstrap.Modal.getInstance(document.getElementById("carritoModal"));
         if (modal) modal.hide();
     }, 2000);
+
+    // Retornar carrito vacío para actualización externa
+    if (typeof actualizarModal === "function") actualizarModal(carrito);
+
+    return carrito;
 }

@@ -1,3 +1,4 @@
+// scripts/carrito/carritoModal.js
 // MODAL - CARRITO
 
 document.addEventListener("DOMContentLoaded", () => {
