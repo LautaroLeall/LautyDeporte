@@ -3,7 +3,24 @@
 import { getAuthUser } from "../profile/profileHelpers.js";
 import { getCompraKey } from "../profile/profileHelpers.js";
 
-//  Actualiza el contenido visual del modal del carrito.
+// Guarda el carrito actual en localStorage usando la clave personalizada del usuario logueado
+export function guardarCarrito(carrito) {
+    const user = getAuthUser();
+    if (user) {
+        localStorage.setItem(`carrito_${user.userName}`, JSON.stringify(carrito));
+    }
+}
+
+// Carga el carrito guardado en localStorage para el usuario logueado
+export function cargarCarrito() {
+    const user = getAuthUser();
+    if (user) {
+        return JSON.parse(localStorage.getItem(`carrito_${user.userName}`)) || [];
+    }
+    return [];
+}
+
+// Actualiza el contenido visual del modal del carrito.
 export function actualizarModal(carrito) {
     const lista = document.getElementById("lista-carrito");
     const total = document.getElementById("total-carrito");
@@ -21,6 +38,7 @@ export function actualizarModal(carrito) {
         count.textContent = `(0 productos)`;
         finalizarBtn.disabled = true;
         vaciarBtn.disabled = true;
+        guardarCarrito(carrito); // Se guarda vacío también
         return;
     }
 
@@ -48,6 +66,7 @@ export function actualizarModal(carrito) {
     count.textContent = `(${carrito.length} producto${carrito.length > 1 ? "s" : ""})`;
     finalizarBtn.disabled = false;
     vaciarBtn.disabled = false;
+    guardarCarrito(carrito); // Guardamos cada vez que se actualiza
 }
 
 // Confirma y elimina un producto del carrito.
@@ -75,7 +94,7 @@ export function confirmarEliminar(index, carrito, actualizarModal) {
     });
 }
 
-//  Vacía el carrito completo.
+// Vacía el carrito completo.
 export function vaciarCarrito(carrito, actualizarModal) {
     Swal.fire({
         title: '¿Vaciar carrito?',
@@ -99,7 +118,7 @@ export function vaciarCarrito(carrito, actualizarModal) {
     });
 }
 
-//  Finaliza la compra, actualiza stock, guarda historial y vacía el carrito.
+// Finaliza la compra, actualiza stock, guarda historial y vacía el carrito.
 export function finalizarCompra(carrito, products, actualizarModal) {
     const authUser = getAuthUser();
 

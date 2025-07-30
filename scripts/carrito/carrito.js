@@ -1,22 +1,38 @@
-// FUNCIONES PRINCIPALES DEL CARRITO
+// carrito.js
+
 import { myProducts as products } from '../../api/products.js';
 import {
   actualizarModal,
   confirmarEliminar,
   vaciarCarrito,
-  finalizarCompra
+  finalizarCompra,
+  cargarCarrito,
+  guardarCarrito
 } from './carritoHelpers.js';
 
-let carrito = [];
+// Inicializamos el carrito desde localStorage si hay usuario logueado
+let carrito = cargarCarrito();
 
 // Agrega producto al carrito (usado desde cualquier parte del sitio)
 window.agregarAlCarrito = (id, talle) => {
   const producto = products.find(p => p.id === id);
   if (producto && producto.talles[talle] > 0) {
     carrito.push({ id: producto.id, nombre: producto.nombre, precio: producto.precio, talle });
-    actualizarModal(carrito);
+    guardarCarrito(carrito); // Guardamos el carrito actualizado
+    actualizarModal(carrito); // Actualizamos visual del modal
+
+    // Feedback visual: mostrar modal con éxito
     const modal = new bootstrap.Modal(document.getElementById("carritoModal"));
     modal.show();
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Producto agregado',
+      text: `${producto.nombre} (Talle ${talle}) se agregó al carrito.`,
+      timer: 1200,
+      showConfirmButton: false,
+      timerProgressBar: true
+    });
   } else {
     Swal.fire({
       icon: 'error',
@@ -26,22 +42,34 @@ window.agregarAlCarrito = (id, talle) => {
   }
 };
 
-// Elimina un producto (con confirmación)
+// Elimina un producto (con confirmación + feedback)
 window.confirmarEliminar = (index) => {
-  confirmarEliminar(index, carrito, actualizarModal);
+  confirmarEliminar(index, carrito, (carritoActualizado) => {
+    carrito = carritoActualizado;
+    guardarCarrito(carrito);
+    actualizarModal(carrito);
+  });
 };
 
-// Eventos DOM para vaciar/finalizar compra
+// DOM Ready: asociar eventos a botones del modal
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     document.getElementById("vaciar-carrito-btn")?.addEventListener("click", () => {
-      vaciarCarrito(carrito, actualizarModal);
+      vaciarCarrito(carrito, (carritoActualizado) => {
+        carrito = carritoActualizado;
+        guardarCarrito(carrito);
+        actualizarModal(carrito);
+      });
     });
 
     document.getElementById("finalizar-compra-btn")?.addEventListener("click", () => {
-      finalizarCompra(carrito, products, actualizarModal);
+      finalizarCompra(carrito, products, (carritoFinal) => {
+        carrito = carritoFinal;
+        guardarCarrito(carrito);
+        actualizarModal(carrito);
+      });
     });
 
-    actualizarModal(carrito);
-  }, 100); // Esperamos que el modal se inyecte
+    actualizarModal(carrito); // Refrescar visual al cargar
+  }, 100); // Esperamos que el modal se inyecte antes de asignar eventos
 });
