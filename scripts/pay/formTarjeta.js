@@ -1,4 +1,4 @@
-// formTarjeta.js
+// scripts/pay/formTarjeta.js
 
 export function generarFormularioTarjeta(formContainer, tipo, procesarPago) {
     const label = tipo === "credito" ? "Crédito" : "Débito";
@@ -20,7 +20,7 @@ export function generarFormularioTarjeta(formContainer, tipo, procesarPago) {
                     <input type="text" id="cvv" class="form-control" placeholder="XXX" maxlength="3">
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Pagar</button>
+            <button type="submit" class="btn btn-success">Confirmar Pago</button>
         </form>
     `;
 

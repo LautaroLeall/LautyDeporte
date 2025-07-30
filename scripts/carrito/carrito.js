@@ -1,4 +1,4 @@
-// carrito.js
+// scripts/carrito/carrito.js
 
 import { myProducts as products } from '../../api/products.js';
 import {
@@ -100,7 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Mostrar el modal si todo está OK
+      // cerrar modal carrito antes de abrir modal pago
+      const carritoModalInstance = bootstrap.Modal.getInstance(document.getElementById("carritoModal"));
+      if (carritoModalInstance) {
+        carritoModalInstance.hide();
+      }
+
+      // Mostrar el modal pago si todo está OK
       const pagoModal = new bootstrap.Modal(pagoModalElement);
       pagoModal.show();
       guardarCarrito(carrito);
