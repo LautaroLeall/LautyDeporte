@@ -21,7 +21,7 @@
 
 #navLinksContainer {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
 }
 
@@ -72,6 +72,7 @@
     font-size: 1.4rem;
 }
 
+#closeNavBtn:hover,
 #cartLink:hover,
 #searchLink:hover,
 #profileLink:hover,
@@ -217,6 +218,11 @@
     border-color: #867960;
 }
 
+/* Ocultar botón de cerrar menú en desktop */
+#closeNavBtn {
+    display: none;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .navbar-collapse {
@@ -245,6 +251,7 @@
         justify-content: center;
         align-items: center;
         gap: 1.5rem;
+        margin-top: 3rem;
     }
 
     #navIconsContainer {
@@ -256,6 +263,7 @@
         margin-top: 1rem;
     }
 
+    #closeNavBtn,
     #homeLink,
     #indumentariaLink,
     #zapatillasLink,
@@ -277,7 +285,7 @@
     }
 
     /* Estilos para el input de búsqueda en mobile */
-    #searchInputContainer{
+    #searchInputContainer {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -287,5 +295,13 @@
 
     #searchInput {
         width: 80%;
+    }
+
+    #closeNavBtn {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 999;
     }
 }
