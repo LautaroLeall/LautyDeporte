@@ -6,7 +6,7 @@ const filter = document.getElementById("filter");
 
 // Renderizamos el filtro con Bootstrap
 filter.innerHTML = `
-    <div class="border border-secondary rounded-5 p-3 me-5 w-25">
+    <div class="container-filter border border-secondary rounded-5 p-3">
         <label for="ordenarProductos" class="form-label fw-bold text-secondary">
             Ordenar productos por:
         </label>

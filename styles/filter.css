@@ -1,3 +1,9 @@
-#filter{
+#filter {
     padding-top: 80px;
+    margin-right: 1rem;
+    width: 18rem;
+}
+
+.container-filter select {
+    cursor: pointer;
 }
