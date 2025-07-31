@@ -1,10 +1,43 @@
-.formulario{
-    border-radius: 50px;
-    padding-top: 100px;
+.formulario {
+    padding-top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 
-.register-link{
+.formulario form {
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    width: 100vw;
+    max-width: 500px;
+}
+
+/* Feedback de errores */
+.formulario .error {
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Enlace registro/login alterno */
+.register-link {
     text-decoration: none;
-    font-size: 10px;
+    font-size: 0.8rem;
     font-weight: 600;
+    color: #6c757d;
+    transition: all 0.2s ease-in-out;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .formulario form {
+        max-width: 350px;
+    }
 }
