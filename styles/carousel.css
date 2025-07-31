@@ -1,3 +1,21 @@
-#carousel{
-    margin: 4rem auto; 
+#carousel {
+    margin: 4rem auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .carousel {
+        max-height: 10rem;
+        height: 9rem;
+    }
+
+    .carousel-item {
+        max-height: 10rem;
+        height: 9rem;
+    }
+
+    .img-carousel {
+        height: 10rem;
+        max-height: 9rem;
+    }
 }
