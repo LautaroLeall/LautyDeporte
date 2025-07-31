@@ -6,7 +6,7 @@ const footer = document.getElementById("footer");
 
 // Incrementamos un footer a nuestro documento
 footer.innerHTML += `
-    <div class="container-fluid bg-dark py-3 text-center mt-5">
+    <div class="container-fluid bg-dark py-3 text-center mt-5 footer">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4 col-xl-3 text-start">
                 <h5 class="text-secondary fw-bold">Contacto</h5>
