@@ -17,7 +17,7 @@ if (!producto) {
     const tallesDisponibles = Object.entries(producto.talles)
         .filter(([talle, stock]) => stock > 0)
         .map(([talle], i) => `
-            <div class="form-check form-check-inline">
+            <div class="container-talles form-check">
                 <input class="form-check-input" type="radio" name="talleOptions" id="talle-${i}" value="${talle}">
                 <label class="form-check-label btn btn-outline-secondary" for="talle-${i}">${talle}</label>
             </div>
@@ -39,11 +39,11 @@ if (!producto) {
                     <p class="text-muted">${producto.descripcion || 'Sin descripción disponible.'}</p>
                     <div class="mt-4">
                         <label class="form-label fw-bold">Disponibilidad:</label>
-                        <div id="tallesContainer" class="mb-3">
+                        <div id="tallesContainer" class="mb-4">
                             ${tallesDisponibles || '<p class="text-danger">Sin stock disponible</p>'}
                         </div>
                     </div>
-                    <div class="d-grid gap-2">
+                    <div class="d-grid">
                         <button id="btnAgregar" class="btn btn-warning fw-bold" ${tallesDisponibles ? '' : 'disabled'}>
                             Agregar al carrito
                         </button>
