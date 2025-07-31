@@ -1,3 +1,5 @@
+// scripts/profile/editModal.js
+
 // Editar perfil con campos opcionales y validaciones
 import { getAuthUser, updateUser, regex } from "./profileHelpers.js";
 

@@ -1,3 +1,4 @@
+// scripts/cards/cardsZ.js
 // CARDS - ZAPATILLAS
 
 // Importamos el array de productos desde el archivo products.js

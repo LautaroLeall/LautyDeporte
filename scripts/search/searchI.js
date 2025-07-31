@@ -1,3 +1,4 @@
+// scripts/search/searchI.js
 // SEARCH - INDUMENTARIA
 
 import { myProducts } from "../../api/products.js";

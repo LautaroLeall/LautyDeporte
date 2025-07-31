@@ -1,3 +1,4 @@
+// scripts/cards.js
 // CARDS
 // Importamos el array de productos desde el archivo products.js
 import { myProducts } from '../api/products.js';

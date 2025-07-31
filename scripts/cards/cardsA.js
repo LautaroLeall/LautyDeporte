@@ -1,3 +1,4 @@
+// scripts/cards/cardsA.js
 // CARDS - ACCESORIOS
 
 // Importamos el array de productos desde el archivo products.js

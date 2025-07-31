@@ -1,3 +1,4 @@
+// scripts/search/searchZ.js
 // SEARCH - ZAPATILLAS
 
 import { myProducts } from "../../api/products.js";

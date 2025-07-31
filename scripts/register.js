@@ -1,3 +1,4 @@
+// scripts/register.js
 // REGISTRARSE
 
 class User {

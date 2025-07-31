@@ -1,3 +1,4 @@
+// scripts/navbar.js
 // NAVBAR
 
 document.addEventListener("DOMContentLoaded", () => {

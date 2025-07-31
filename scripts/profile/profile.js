@@ -1,4 +1,4 @@
-// profile.js
+// scripts/profile/profile.js
 
 import {
     getAuthUser,

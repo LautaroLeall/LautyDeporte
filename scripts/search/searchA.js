@@ -1,3 +1,4 @@
+// scripts/search/searchA.js
 // SEARCH - ACCESORIOS
 
 import { myProducts } from "../../api/products.js";

@@ -1,3 +1,4 @@
+// scripts/login.js
 // LOGIN
 
 // Obtenemos los elementos del DOM
