@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     </div>
                                 </div>
                                 <p class="text-success fw-bold">$${product.precio.toLocaleString()}</p>
-                                <a href="product.html?id=${product.id}" class="btn btn-outline-primary">Ver producto</a>
+                                <a href="../pages/product.html?id=${product.id}" class="btn btn-outline-primary">Ver producto</a>
                             </div>
                         </div>
                     </div>
