@@ -5,17 +5,17 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .carousel {
-        max-height: 10rem;
-        height: 9rem;
+        height: 8rem;
+        max-height: 9rem;
     }
 
     .carousel-item {
-        max-height: 10rem;
-        height: 9rem;
+        height: 8rem;
+        max-height: 9rem;
     }
 
     .img-carousel {
-        height: 10rem;
+        height: 8rem;
         max-height: 9rem;
     }
 }

@@ -34,7 +34,7 @@ if (!producto) {
                     <img id="img-principal" src="${producto.imgFront}" class="img-fluid rounded shadow zoomed-img" alt="${producto.nombre}">
                 </div>
                 <div class="col-md-7">
-                    <h3 class="fw-bold">${producto.nombre}</h3>
+                    <h3 class="title-product fw-bold">${producto.nombre}</h3>
                     <p class="text-success fw-bold fs-5">$${producto.precio}</p>
                     <p class="text-muted">${producto.descripcion || 'Sin descripción disponible.'}</p>
                     <div class="mt-4">

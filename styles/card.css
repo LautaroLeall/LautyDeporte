@@ -38,3 +38,27 @@
 .img-card:hover {
     transform: scale(1.05);
 }
+
+/* RESPONSIVE */
+@media (max-width: 770px) {
+    .producto-card {
+        width: 280px;
+        min-height: 230px;
+    }
+
+    .img-container {
+        height: 230px;
+    }
+
+    .img-card {
+        max-height: 230px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .stock {
+        font-size: 14px;
+    }
+}

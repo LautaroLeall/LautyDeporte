@@ -60,3 +60,14 @@
         transform: translateY(0);
     }
 }
+
+/* RESPONSIVE */
+@media (max-width: 770px) {
+    .title-product {
+        margin-top: 1.5rem;
+    }
+
+    #tallesContainer .form-check-label {
+        padding: 0.2rem 0.6rem;
+    }
+}
