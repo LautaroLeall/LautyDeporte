@@ -25,15 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
     navBar.innerHTML += `
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand fw-bold ms-3 d-lg-none" href="${routes.home}" id="homeLink">LautyDeporte</a>
+                </div>
+
                 <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav w-100 justify-content-around align-items-center">
-                        <li class="nav-item">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-none d-lg-block">
                             <a class="nav-link fw-bold" href="${routes.home}" id="homeLink">LautyDeporte</a>
                         </li>
-                        <div class="d-flex gap-5 align-items-center" id="navLinksContainer">
+                        <div id="navLinksContainer">
                             <li>
                                 <a class="nav-link fw-medium" href="${routes.indumentaria}" id="indumentariaLink">Indumentaria</a>
                             </li>
@@ -44,10 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <a class="nav-link fw-medium" href="${routes.accesorios}" id="accesoriosLink">Accesorios</a>
                             </li>
                         </div>
-                        <div id="searchInputContainer" class="d-none w-50 slide-in-up">
+                        <div id="searchInputContainer" class="d-none slide-in-up">
                             <input id="searchInput" class="form-control form-control-sm" type="search" placeholder="Buscar productos...">
                         </div>
-                        <div class="d-flex gap-2 align-items-center">
+                        <div id="navIconsContainer">
                             <li>
                                 <a class="nav-link text-secondary fw-bold" id="searchLink" href="#">
                                     <i class="bi bi-search"></i>

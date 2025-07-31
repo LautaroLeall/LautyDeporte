@@ -12,6 +12,25 @@
     height: 65px;
 }
 
+.navbar-nav {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#navLinksContainer {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+#navIconsContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
 /* HOME LINK */
 #homeLink {
     color: #867960;
@@ -118,6 +137,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -129,6 +149,7 @@
         opacity: 1;
         transform: translateY(0);
     }
+
     to {
         opacity: 0;
         transform: translateY(-30px);
@@ -140,6 +161,7 @@
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -151,6 +173,7 @@
         opacity: 1;
         transform: translateY(0);
     }
+
     to {
         opacity: 0;
         transform: translateY(30px);
@@ -196,30 +219,73 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    #homeLink {
-        font-size: 1.3rem;
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        transition: left 0.4s ease-in-out;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
     }
 
+    /* Cuando el navbar está abierto */
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    #navLinksContainer {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    #navIconsContainer {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    #homeLink,
     #indumentariaLink,
     #zapatillasLink,
-    #accesoriosLink {
-        font-size: 1.1rem;
+    #accesoriosLink,
+    #searchLink,
+    #loginLink,
+    #registerLink,
+    #logoutLink,
+    #profileLink,
+    #cartLink {
+        font-size: 1.4rem;
+    }
+
+    /* Ocultar branding duplicado */
+    .navbar-brand {
+        display: inline-block !important;
+        font-size: 1.5rem;
+        color: #867960;
+    }
+
+    /* Estilos para el input de búsqueda en mobile */
+    #searchInputContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 1rem;
     }
 
     #searchInput {
-        font-size: 0.9rem;
-    }
-
-    #searchInputContainer {
-        max-width: 300px;
-        padding-left: 0.5rem;
-    }
-
-    #searchLink,
-    #profileLink,
-    #loginLink,
-    #logoutLink,
-    #registerLink {
-        font-size: 1.2rem;
+        width: 80%;
     }
 }
