@@ -54,11 +54,12 @@ function renderizarCards(products) {
                     <div class="card-body h-50">
                         <h5 class="card-title fw-bold">${product.nombre}</h5>
                         <div class="list-group mb-3">
-                            <div class="list-group-item fw-bold text-secondary">
-                                Disponibles <span class="badge bg-dark text-light">${product.stock}</span>
+                            <div class="stock list-group-item fw-bold text-secondary">
+                                Disponibles <span class="stock badge text-center bg-dark text-light">${product.stock}</span>
                             </div>
-                            <div class="list-group-item d-flex justify-content-center flex-wrap gap-2 badge text-align-center">
-                                ${tallesDisponibles || '<span class="text-muted badge border border-secondary fs-7">Sin stock</span>'}
+                            <div class="list-group-item d-flex justify-content-center flex-wrap gap-1 badge text-align-center">
+                                ${tallesDisponibles ||
+                                    '<span class="badge rounded-pill text-bg-danger">Sin stock</span>'}
                             </div>
                         </div>
                         <p class="text-success fw-bold">$${product.precio}</p>
