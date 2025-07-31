@@ -1,3 +1,18 @@
 .container-profile {
     margin: 6rem auto;
 }
+
+/* RESPONSIVE FOOTER */
+@media (max-width: 768px) {
+    #btnEditarPerfil{
+        font-size: 0.9rem;
+    }
+
+    #btnEliminarCuenta{
+        font-size: 0.9rem;
+    }
+
+    .list-group-item span .text-muted{
+        font-size: 0.9rem;
+    }
+}
