@@ -1,3 +1,4 @@
+// scripts/footer.js
 // FOOTER
 
 // Accedemos al elemento que contiene el contenido de la footer

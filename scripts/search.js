@@ -1,3 +1,4 @@
+// scripts/search.js
 // SEARCH
 
 // Importamos los productos desde el archivo simulado de "base de datos"

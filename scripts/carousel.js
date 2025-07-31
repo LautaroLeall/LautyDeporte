@@ -1,3 +1,4 @@
+// scripts/carousel.js
 // CAROUSEL
 
 // Accedemos al elemento que contiene el contenido de la carrusel

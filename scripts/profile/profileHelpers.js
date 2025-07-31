@@ -1,4 +1,4 @@
-// profileHelpers.js
+// scripts/profile/profileHelpers.js
 
 // Obtiene el usuario actualmente autenticado desde localStorage
 export function getAuthUser() {

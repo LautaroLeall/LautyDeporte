@@ -1,3 +1,4 @@
+// scripts/filter.js
 // FILTRO GLOBAL
 
 // Accedemos al contenedor del filtro

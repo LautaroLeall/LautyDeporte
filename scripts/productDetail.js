@@ -1,3 +1,4 @@
+// scripts/productDetail.js
 // PRODUCT DETAIL
 import { myProducts } from '../api/products.js';
 
