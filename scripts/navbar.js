@@ -29,59 +29,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand fw-bold ms-3 d-lg-none" href="${routes.home}" id="homeLink">LautyDeporte</a>
+                    <a class="navbar-brand fw-bold ms-5 d-lg-none" href="${routes.home}" id="homeLink">LautyDeporte</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav">
+                    <button class="btn btn-light mb-3 align-self-end" id="closeNavBtn">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </button>
+                    <ul class="navbar-nav w-100 justify-content-around align-items-center">
                         <li class="nav-item d-none d-lg-block">
                             <a class="nav-link fw-bold" href="${routes.home}" id="homeLink">LautyDeporte</a>
                         </li>
-                        <div id="navLinksContainer">
-                            <li>
-                                <a class="nav-link fw-medium" href="${routes.indumentaria}" id="indumentariaLink">Indumentaria</a>
-                            </li>
-                            <li>
-                                <a class="nav-link fw-medium" href="${routes.zapatillas}" id="zapatillasLink">Zapatillas</a>
-                            </li>
-                            <li>
-                                <a class="nav-link fw-medium" href="${routes.accesorios}" id="accesoriosLink">Accesorios</a>
-                            </li>
+                        <div id="navLinksContainer" class="d-flex align-items-center">
+                            <li><a class="nav-link fw-medium" href="${routes.indumentaria}" id="indumentariaLink">Indumentaria</a></li>
+                            <li><a class="nav-link fw-medium" href="${routes.zapatillas}" id="zapatillasLink">Zapatillas</a></li>
+                            <li><a class="nav-link fw-medium" href="${routes.accesorios}" id="accesoriosLink">Accesorios</a></li>
                         </div>
-                        <div id="searchInputContainer" class="d-none slide-in-up">
+                        <div id="searchInputContainer" class="d-none slide-in-up w-100 px-3">
                             <input id="searchInput" class="form-control form-control-sm" type="search" placeholder="Buscar productos...">
                         </div>
-                        <div id="navIconsContainer">
-                            <li>
-                                <a class="nav-link text-secondary fw-bold" id="searchLink" href="#">
-                                    <i class="bi bi-search"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-success fw-bold" id="loginLink" href="${routes.login}">
-                                    <i class="bi bi-person-check"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-success fw-bold" id="registerLink" href="${routes.register}">
-                                    <i class="bi bi-person-add"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-danger fw-bold" id="logoutLink" href="#">
-                                    <i class="bi bi-person-dash"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-success fw-bold" id="profileLink" href="${routes.profile}">
-                                    <i class="bi bi-person-bounding-box"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link text-secondary fw-bold" id="cartLink" href="#">
-                                    <i class="bi bi-cart4"></i>
-                                </a>
-                            </li>
+                        <div id="navIconsContainer" class="d-flex gap-3 align-items-center">
+                            <li><a class="nav-link text-secondary fw-bold" id="searchLink" href="#"><i class="bi bi-search"></i></a></li>
+                            <li><a class="nav-link text-success fw-bold" id="loginLink" href="${routes.login}"><i class="bi bi-person-check"></i></a></li>
+                            <li><a class="nav-link text-success fw-bold" id="registerLink" href="${routes.register}"><i class="bi bi-person-add"></i></a></li>
+                            <li><a class="nav-link text-danger fw-bold" id="logoutLink" href="#"><i class="bi bi-person-dash"></i></a></li>
+                            <li><a class="nav-link text-success fw-bold" id="profileLink" href="${routes.profile}"><i class="bi bi-person-bounding-box"></i></a></li>
+                            <li><a class="nav-link text-secondary fw-bold" id="cartLink" href="#"><i class="bi bi-cart4"></i></a></li>
                         </div>
                     </ul>
                 </div>
@@ -89,19 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
         </nav>
     `;
 
-    // Mostrar u ocultar botones según autenticación
+    // Mostrar/ocultar botones según autenticación
     document.getElementById("loginLink").style.display = authUser ? "none" : "flex";
     document.getElementById("registerLink").style.display = authUser ? "none" : "flex";
     document.getElementById("logoutLink").style.display = authUser ? "flex" : "none";
     document.getElementById("profileLink").style.display = authUser ? "flex" : "none";
 
-    // Evento para logout
+    // Logout
     document.getElementById("logoutLink").addEventListener("click", () => {
         localStorage.removeItem("authUser");
         window.location.href = routes.login;
     });
 
-    // Abrir modal de carrito
+    // Mostrar carrito en modal
     document.getElementById("cartLink").addEventListener("click", (e) => {
         e.preventDefault();
         try {
@@ -113,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Activar efecto de buscador animado
+    // Buscador animado con toggle
     const searchLink = document.getElementById("searchLink");
     const navLinksContainer = document.getElementById("navLinksContainer");
     const searchInputContainer = document.getElementById("searchInputContainer");
@@ -124,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     searchLink.addEventListener("click", (event) => {
         event.preventDefault();
         if (!isSearchActive) {
+            // Ocultar enlaces y mostrar input
             navLinksContainer.classList.add("slide-out-up");
             setTimeout(() => {
                 navLinksContainer.classList.add("d-none");
@@ -133,8 +107,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 searchInputContainer.classList.add("slide-in-up");
                 searchIcon.classList.replace("bi-search", "bi-x-lg");
                 isSearchActive = true;
+
+                // auto-focus al input de búsqueda
+                setTimeout(() => {
+                    searchInput.focus();
+                    searchInput.select();
+                }, 450);
             }, 400);
         } else {
+            // Volver a enlaces
             searchInputContainer.classList.remove("slide-in-up");
             searchInputContainer.classList.add("slide-out-down");
             setTimeout(() => {
@@ -149,6 +130,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 isSearchActive = false;
             }, 400);
         }
+    });
+
+    // cerrar menú colapsado con misma animación de slide
+    const closeNavBtn = document.getElementById("closeNavBtn");
+    closeNavBtn.addEventListener("click", () => {
+        const collapseEl = document.getElementById("navbarScroll");
+        // Quitar clase .show para animar salida
+        collapseEl.classList.remove("show");
     });
 
     // Resaltar links activos
