@@ -30,13 +30,21 @@
 }
 
 /* Talles como botones */
+#tallesContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 #tallesContainer .form-check-input {
     display: none;
 }
 
 #tallesContainer .form-check-label {
+    font-size: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -67,7 +75,13 @@
         margin-top: 1.5rem;
     }
 
+    #tallesContainer {
+        justify-content: center;
+        margin-right: 1rem;
+    }
+
     #tallesContainer .form-check-label {
-        padding: 0.2rem 0.6rem;
+        padding: 0.4rem 0.8rem;
+        margin: 0.2rem 0;
     }
 }
