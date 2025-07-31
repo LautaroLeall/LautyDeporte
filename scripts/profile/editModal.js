@@ -44,19 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalEl = document.getElementById("editarPerfilModal");
     const bsModal = new bootstrap.Modal(modalEl);
 
-    // Abrir modal y precargar datos del usuario
+    // Abrir modal y precargar datos actuales
     btnEditar.addEventListener("click", () => {
         const user = getAuthUser();
         if (!user) return;
 
         inputName.value = user.userName || "";
         inputEmail.value = user.email || "";
-        inputPass.value = ""; // no se muestra la contraseña actual
+        inputPass.value = "";
 
         bsModal.show();
     });
 
-    // Validar campos editables y permitir modificar uno o más opcionalmente
+    // Validar campos y actualizar si hay cambios
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -68,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let cambios = false;
         const actualizados = { ...user };
 
+        const oldUserName = user.userName;
+
+        // Validación y actualización del nombre de usuario
         if (nuevoNombre && nuevoNombre !== user.userName) {
             if (!regex.userName.test(nuevoNombre)) {
                 return Swal.fire("Nombre inválido", "Debe tener 5–20 caracteres válidos.", "warning");
@@ -76,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cambios = true;
         }
 
+        // Validación y actualización del email
         if (nuevoEmail && nuevoEmail !== user.email) {
             if (!regex.email.test(nuevoEmail)) {
                 return Swal.fire("Email inválido", "Correo electrónico no válido.", "warning");
@@ -84,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cambios = true;
         }
 
+        // Validación y actualización de la contraseña
         if (nuevaPassword) {
             if (!regex.password.test(nuevaPassword)) {
                 return Swal.fire("⚠️ Contraseña inválida", "Debe tener 8–25 caracteres con mayúscula, minúscula, número y símbolo.", "warning");
@@ -96,9 +101,42 @@ document.addEventListener("DOMContentLoaded", () => {
             return Swal.fire("Sin cambios", "No modificaste ningún campo.", "info");
         }
 
-        // Guardar en localStorage
+        // ACTUALIZAR authUser
         updateUser(actualizados);
 
+        // ACTUALIZAR el usuario en el array Usuarios
+        const usuarios = JSON.parse(localStorage.getItem("Usuarios")) || [];
+        const index = usuarios.findIndex(
+            u => u.userName === user.userName && u.email === user.email
+        );
+
+        if (index !== -1) {
+            usuarios[index] = actualizados;
+            localStorage.setItem("Usuarios", JSON.stringify(usuarios));
+        }
+
+        // Si cambió el userName, renombrar las claves de historial y métodos de pago
+        if (actualizados.userName !== oldUserName) {
+            const historialKeyOld = `compras_${oldUserName}`;
+            const historialKeyNew = `compras_${actualizados.userName}`;
+            const metodosKeyOld = `metodos_pago_${oldUserName}`;
+            const metodosKeyNew = `metodos_pago_${actualizados.userName}`;
+
+            const historial = localStorage.getItem(historialKeyOld);
+            const metodos = localStorage.getItem(metodosKeyOld);
+
+            if (historial) {
+                localStorage.setItem(historialKeyNew, historial);
+                localStorage.removeItem(historialKeyOld);
+            }
+
+            if (metodos) {
+                localStorage.setItem(metodosKeyNew, metodos);
+                localStorage.removeItem(metodosKeyOld);
+            }
+        }
+
+        // Feedback visual
         Swal.fire({
             icon: "success",
             title: "Perfil actualizado",
@@ -109,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         bsModal.hide();
 
-        // Actualizar datos en la UI
+        // Actualizar visual del perfil
         document.getElementById("nombreUsuario").textContent = actualizados.userName;
         document.getElementById("emailUsuario").textContent = actualizados.email;
     });
