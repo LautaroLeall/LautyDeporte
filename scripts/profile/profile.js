@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 🛍️ Mostrar historial de compras con acordeón
+    // Mostrar historial de compras con acordeón
     const historialKey = getCompraKey(); // Clave única del usuario
     const historial = JSON.parse(localStorage.getItem(historialKey)) || [];
     const cont = document.getElementById("historialCompras");
@@ -44,7 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
         cont.innerHTML = `<p class="text-muted m-0">Aún no has realizado compras.</p>`;
     } else {
         cont.innerHTML = historial.map((compra, index) => {
-            const fecha = new Date(compra.fecha).toLocaleString();
+            const fecha = new Date(compra.fecha).toLocaleDateString('es-AR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
 
             // Lista de ítems comprados
             const itemsHTML = compra.items.map(item => `
